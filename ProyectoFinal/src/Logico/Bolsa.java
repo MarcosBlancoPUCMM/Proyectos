@@ -37,7 +37,6 @@ public class Bolsa {
 	public void setEmpresas(ArrayList<Empresa> empresas) {
 		this.empresas = empresas;
 	}
-
 	public ArrayList<OfertaLaboral> getOfertas() {
 		return ofertas;
 	}
