@@ -8,5 +8,4 @@ public class Aspirante {
 	protected String nombre, apellidos, ciudad, cedula, telefono, direccion, nacionalidad, pais, correo, sexo, estadoCivil;
 	protected boolean estado; //Empleado o sin trabajo
 	protected int edad;
-	
 }

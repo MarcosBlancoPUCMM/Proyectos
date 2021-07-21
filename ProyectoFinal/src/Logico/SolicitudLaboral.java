@@ -6,6 +6,7 @@ public class SolicitudLaboral {
 	private String nombre, tipo, carrera, area, nacionalidad, ocipacion, sexo, estadoCivil;
 	private int yearsExperiencia, edad;
 	private float paga;
+	
 	public SolicitudLaboral(boolean libre, boolean espanol, boolean ingles, boolean frances, boolean dispuestoMudarse,
 			boolean licenciaConducir, boolean trabajoParcial, boolean microsoftOffice, boolean adobe, String nombre,
 			String tipo, String carrera, String area, String nacionalidad, String ocipacion, String sexo,
@@ -32,6 +33,7 @@ public class SolicitudLaboral {
 		this.edad = edad;
 		this.paga = paga;
 	}
+	
 	public boolean isLibre() {
 		return libre;
 	}
@@ -152,7 +154,4 @@ public class SolicitudLaboral {
 	public void setPaga(float paga) {
 		this.paga = paga;
 	}
-	
-	
-	
 }

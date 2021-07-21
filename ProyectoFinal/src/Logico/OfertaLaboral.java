@@ -34,6 +34,7 @@ public class OfertaLaboral {
 		this.adobe = adobe;
 		this.paga = paga;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -160,7 +161,4 @@ public class OfertaLaboral {
 	public void setPaga(float paga) {
 		this.paga = paga;
 	}
-	
-	
-	
 }
