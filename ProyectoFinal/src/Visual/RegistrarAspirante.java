@@ -40,6 +40,9 @@ public class RegistrarAspirante extends JDialog {
 	private JPanel panelObrero;
 	private JPanel panelTecnico;
 	private JPanel panelUniversitario;
+	private JRadioButton rdbtnCasado;
+	private JRadioButton rdbtnSoltero;
+	private JRadioButton rdbtnViudo;
 
 	/**
 	 * Launch the application.
@@ -164,18 +167,40 @@ public class RegistrarAspirante extends JDialog {
 				panel.add(lblEstadoCivil);
 			}
 			{
-				JRadioButton rdbtnSoltero = new JRadioButton("Soltero");
+				rdbtnSoltero = new JRadioButton("Soltero");
+				rdbtnSoltero.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						rdbtnSoltero.setSelected(true);
+						rdbtnCasado.setSelected(false);
+						rdbtnViudo.setSelected(false);
+					}
+				});
 				rdbtnSoltero.setSelected(true);
 				rdbtnSoltero.setBounds(92, 194, 70, 25);
 				panel.add(rdbtnSoltero);
 			}
 			{
-				JRadioButton rdbtnCasado = new JRadioButton("Casado");
+				rdbtnCasado = new JRadioButton("Casado");
+				rdbtnCasado.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						rdbtnSoltero.setSelected(false);
+						rdbtnCasado.setSelected(true);
+						rdbtnViudo.setSelected(false);
+					
+					}
+				});
 				rdbtnCasado.setBounds(212, 194, 70, 25);
 				panel.add(rdbtnCasado);
 			}
 			{
-				JRadioButton rdbtnViudo = new JRadioButton("Viudo");
+				rdbtnViudo = new JRadioButton("Viudo");
+				rdbtnViudo.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						rdbtnSoltero.setSelected(false);
+						rdbtnCasado.setSelected(false);
+						rdbtnViudo.setSelected(true);
+					}
+				});
 				rdbtnViudo.setBounds(333, 194, 60, 25);
 				panel.add(rdbtnViudo);
 			}
