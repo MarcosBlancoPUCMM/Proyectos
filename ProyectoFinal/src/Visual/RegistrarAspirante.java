@@ -9,11 +9,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import Logico.Aspirante;
+import Logico.SolicitudLaboral;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class RegistrarAspirante extends JDialog {
@@ -43,6 +47,8 @@ public class RegistrarAspirante extends JDialog {
 	private JRadioButton rdbtnCasado;
 	private JRadioButton rdbtnSoltero;
 	private JRadioButton rdbtnViudo;
+	private JRadioButton rdbtnMujer;
+	private JRadioButton rdbtnHombre;
 
 	/**
 	 * Launch the application.
@@ -109,12 +115,26 @@ public class RegistrarAspirante extends JDialog {
 				txtCedula.setColumns(10);
 			}
 			
-			JRadioButton rdbtnHombre = new JRadioButton("Hombre");
+			rdbtnHombre = new JRadioButton("Hombre");
+			rdbtnHombre.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					rdbtnHombre.setSelected(true);
+					rdbtnMujer.setSelected(false);
+					
+				}
+			});
+			
 			rdbtnHombre.setSelected(true);
 			rdbtnHombre.setBounds(270, 67, 74, 25);
 			panel.add(rdbtnHombre);
 			
-			JRadioButton rdbtnMujer = new JRadioButton("Mujer");
+			rdbtnMujer = new JRadioButton("Mujer");
+			rdbtnMujer.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					rdbtnHombre.setSelected(false);
+					rdbtnMujer.setSelected(true);
+				}
+			});
 			rdbtnMujer.setBounds(348, 67, 62, 25);
 			panel.add(rdbtnMujer);
 			
@@ -357,6 +377,24 @@ public class RegistrarAspirante extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnRegistrar = new JButton("Registrar");
+				btnRegistrar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String sexo = "Hombre";
+						String estadocivil = "Soltero";
+						if(rdbtnMujer.isSelected()) {
+							sexo = "Mujer";
+						}
+						if(rdbtnCasado.isSelected()) {
+							estadocivil = "Casado";
+						}else if (rdbtnViudo.isSelected()) {
+							estadocivil = "Viudo";
+						}
+						
+						Aspirante aux = new Aspirante(null, textField.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", "N/A", txtCiudad.getText(), txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, false, Integer.valueOf(txtEdad.getText()));
+						
+					
+					}
+				});
 				btnRegistrar.setActionCommand("OK");
 				buttonPane.add(btnRegistrar);
 				getRootPane().setDefaultButton(btnRegistrar);
