@@ -2,7 +2,8 @@ package Logico;
 
 import java.util.ArrayList;
 
-import logico.Persona;
+import logico.Curriculum;
+import logico.Empresa;
 
 public class Bolsa {
 
@@ -52,17 +53,21 @@ public class Bolsa {
 		this.solicitudes = solicitudes;
 	}
 
-	public OfertaLaboral registrarOferta(OfertaLaboral oferta) {
-		
-		return;
+	public boolean registrarOferta(OfertaLaboral oferta) {
+		boolean logrado = false;
+		if (oferta != null) {
+			ofertas.add(oferta);
+			logrado = true;
+		}
+		return logrado;
 	}
 	
 	public boolean existeAspirante(Aspirante aspirante) {
 		int i = 0;
 		boolean existe = false;
 		while (i < aspirantes.size() && !existe) {
-			if (aspirantes.get(i).getCedula().equalsIgnoreCase(aspirante.getCedula())) {
-				existe = true;
+			if (aspirantes.get(i).getCedula().equalsIgnoreCase(aspirante.getCedula())) { //Si coinciden las cedulas se considera 
+				existe = true;                                                           //que el aspirante existe
 			}
 			i++;
 		}
@@ -71,15 +76,49 @@ public class Bolsa {
 	
 	public boolean registrarAspirante(Aspirante aspirante) {
 		boolean logrado = false;
-		if (aspirante != null && !existeAspirante(aspirante)) {
+		if (aspirante != null && !existeAspirante(aspirante)) {		//Si el metodo encuentra al aspirante lo registra
 			aspirantes.add(aspirante);
 			logrado = true;
 		}
 		return logrado;
 	}
 	
+	public boolean registrarSolicitud(SolicitudLaboral solicitud) {
+		boolean logrado = false;
+		if (solicitud != null) {
+			solicitudes.add(solicitud);
+			logrado = true;
+		}
+		return logrado;
+	}
+
+	private Empresa buscarEmpresa(String RNC) {
+		int i = 0;
+		boolean encontrado = false;
+		Empresa aux = null;
+		while (i < empresas.size() && !encontrado) {
+			if (empresas.get(i).getRNC().equalsIgnoreCase(RNC)) {
+				aux = empresas.get(i);
+				encontrado = true;
+			}
+			i++;
+		}
+		return aux;
+	}
+	
+	public boolean registrarEmpreza(Empresa empresa) {
+		boolean logrado = false;
+		Empresa aux = buscarEmpresa(empresa.getRNC());
+		if (aux == null) {
+			empresas.add(empresa);
+			logrado = true;
+		}
+		return logrado;
+	}
+	
+	
+	
 	public void generarReporte() {
 		
 	}
-	*/
 }
