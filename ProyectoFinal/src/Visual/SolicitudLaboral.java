@@ -15,6 +15,8 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JRadioButton;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SolicitudLaboral extends JDialog {
 
@@ -443,6 +445,11 @@ public class SolicitudLaboral extends JDialog {
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					dispose();
+					}
+				});
 				btnCancelar.setActionCommand("Cancel");
 				buttonPane.add(btnCancelar);
 			}
