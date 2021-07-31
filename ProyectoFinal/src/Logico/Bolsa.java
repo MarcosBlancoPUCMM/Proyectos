@@ -2,9 +2,6 @@ package Logico;
 
 import java.util.ArrayList;
 
-import logico.Curriculum;
-import logico.Empresa;
-
 public class Bolsa {
 
 	private static Bolsa bolsa = null;
