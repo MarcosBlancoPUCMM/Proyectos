@@ -2,6 +2,8 @@ package Logico;
 
 import java.util.ArrayList;
 
+import logico.Persona;
+
 public class Bolsa {
 
 	private static Bolsa bolsa = null;
@@ -50,15 +52,30 @@ public class Bolsa {
 		this.solicitudes = solicitudes;
 	}
 
-	/*
-	public OfertaLaboral registrarOferta() {
+	public OfertaLaboral registrarOferta(OfertaLaboral oferta) {
 		
 		return;
 	}
 	
-	public Aspirante registrarAspirante() {
-		
-		return;
+	public boolean existeAspirante(Aspirante aspirante) {
+		int i = 0;
+		boolean existe = false;
+		while (i < aspirantes.size() && !existe) {
+			if (aspirantes.get(i).getCedula().equalsIgnoreCase(aspirante.getCedula())) {
+				existe = true;
+			}
+			i++;
+		}
+		return existe;
+	}
+	
+	public boolean registrarAspirante(Aspirante aspirante) {
+		boolean logrado = false;
+		if (aspirante != null && !existeAspirante(aspirante)) {
+			aspirantes.add(aspirante);
+			logrado = true;
+		}
+		return logrado;
 	}
 	
 	public void generarReporte() {
