@@ -46,4 +46,8 @@ public class Empresa {
 	public void setOfertas(ArrayList<OfertaLaboral> ofertas) {
 		this.ofertas = ofertas;
 	}
+	
+	public void insertarOferta(OfertaLaboral oferta) {
+		ofertas.add(oferta);
+	}
 }

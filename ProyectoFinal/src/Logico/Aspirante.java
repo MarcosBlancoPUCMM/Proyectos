@@ -141,6 +141,13 @@ public class Aspirante {
 		this.edad = edad;
 	}
 	
-	
+	public boolean registrarSolicitud(SolicitudLaboral solicitu) {
+		boolean logrado = false;
+		if (solicitu != null) {
+			solicitud.add(solicitu);
+			logrado = true;
+		}
+		return logrado;
+	}
 	
 }
