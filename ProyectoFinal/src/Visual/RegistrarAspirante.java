@@ -10,10 +10,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import Logico.Aspirante;
+import Logico.Bolsa;
 import Logico.SolicitudLaboral;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
@@ -391,6 +393,9 @@ public class RegistrarAspirante extends JDialog {
 						}
 						
 						Aspirante aux = new Aspirante(null, textField.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", "N/A", txtCiudad.getText(), txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, false, Integer.valueOf(txtEdad.getText()));
+						Bolsa.getInstance().registrarAspirante(aux);
+						JOptionPane.showMessageDialog(null, "Registrado", "Registro de Aspirante", JOptionPane.INFORMATION_MESSAGE);
+						clean();
 						
 					
 					}
@@ -401,9 +406,32 @@ public class RegistrarAspirante extends JDialog {
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+					dispose();
+					}
+				});
 				btnCancelar.setActionCommand("Cancel");
 				buttonPane.add(btnCancelar);
 			}
 		}
+	}
+	private void clean() {
+		textField.setText(" ");
+		txtApellidos.setText(" ");
+		txtCiudad.setText(" ");
+		txtCedula.setText(" ");
+		txtPais.setText(" ");
+		txtCorreo.setText(" ");
+		txtEdad.setText(" ");
+		txtNacionalidad.setText(" ");
+		txtOficio1.setText(" ");
+		txtOficio2.setText(" ");
+		txtOficio3.setText(" ");
+		txtOficio4.setText(" ");
+		txtArea.setText(" ");
+		txtYearsExperiencia.setText(" ");
+		txtCarrera.setText(" ");
+		
 	}
 }
