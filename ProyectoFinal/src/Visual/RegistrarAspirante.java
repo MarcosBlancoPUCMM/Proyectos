@@ -415,20 +415,20 @@ public class RegistrarAspirante extends JDialog {
 		}
 	}
 	private void clean() {
-		txtNombre.setText(" ");
-		txtApellidos.setText(" ");
-		txtCiudad.setText(" ");
-		txtCedula.setText(" ");
-		txtPais.setText(" ");
-		txtCorreo.setText(" ");
+		txtNombre.setText("");
+		txtApellidos.setText("");
+		txtCiudad.setText("");
+		txtCedula.setText("");
+		txtPais.setText("");
+		txtCorreo.setText("");
 		txtEdad.setText("");
-		txtNacionalidad.setText(" ");
-		txtOficio1.setText(" ");
-		txtOficio2.setText(" ");
-		txtOficio3.setText(" ");
-		txtOficio4.setText(" ");
-		txtArea.setText(" ");
-		txtYearsExperiencia.setText(" ");
-		txtCarrera.setText(" ");
+		txtNacionalidad.setText("");
+		txtOficio1.setText("");
+		txtOficio2.setText("");
+		txtOficio3.setText("");
+		txtOficio4.setText("");
+		txtArea.setText("");
+		txtYearsExperiencia.setText("");
+		txtCarrera.setText("");
 	}
 }

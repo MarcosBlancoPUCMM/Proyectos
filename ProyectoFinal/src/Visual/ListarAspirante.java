@@ -131,7 +131,7 @@ public class ListarAspirante extends JDialog {
 			rows[3] = Bolsa.getInstance().getAspirantes().get(i).getEdad();
 			rows[4] = Bolsa.getInstance().getAspirantes().get(i).isEstado();
 					
-			
+			model.addRow(rows);
 		}
 		
 	}
