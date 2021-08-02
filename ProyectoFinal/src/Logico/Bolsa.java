@@ -89,7 +89,7 @@ public class Bolsa {
 		return logrado;
 	}
 
-	private Empresa buscarEmpresa(String RNC) {
+	public Empresa buscarEmpresa(String RNC) {
 		int i = 0;
 		boolean encontrado = false;
 		Empresa aux = null;

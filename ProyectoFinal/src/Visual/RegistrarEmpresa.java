@@ -126,10 +126,10 @@ public class RegistrarEmpresa extends JDialog {
 	}
 		
 		private void clean() {
-			txtNombre.setText(" ");
-			txttelefono.setText(" ");
-			txtDireccion.setText(" ");
-			txtRNC.setText(" ");
+			txtNombre.setText("");
+			txttelefono.setText("");
+			txtDireccion.setText("");
+			txtRNC.setText("");
 			
 		
 	}

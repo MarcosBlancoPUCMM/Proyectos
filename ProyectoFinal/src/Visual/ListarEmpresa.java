@@ -7,14 +7,28 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import Logico.Aspirante;
+import Logico.Bolsa;
+import Logico.Empresa;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ListarEmpresa extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
+	private static DefaultTableModel model;
+	private static Object rows[];
+	private JButton btnListarOfertaLaboral;
+	private JButton btnCrearOfertaLaboral;
+	private Empresa selected = null;
+	private JButton btnSalir;
 
 	/**
 	 * Launch the application.
@@ -47,7 +61,24 @@ public class ListarEmpresa extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
+					String headers[] = {"RNC", "Nombre", "Dirección", "Telefono"};
+					model = new DefaultTableModel();
+					model.setColumnIdentifiers(headers);
 					table = new JTable();
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							int index = -1;
+							index = table.getSelectedRow();
+							if(index !=-1) {
+								btnCrearOfertaLaboral.setEnabled(true);
+								btnListarOfertaLaboral.setEnabled(true);
+								String rnc = (String)model.getValueAt(index, 0);
+								selected = Bolsa.getInstance().buscarEmpresa(rnc);
+							}
+						}
+					});
+					table.setModel(model);
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					scrollPane.setViewportView(table);
 				}
@@ -58,23 +89,38 @@ public class ListarEmpresa extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnListarOfertaLaboral = new JButton("Listar Oferta Laboral");
+				btnListarOfertaLaboral = new JButton("Listar Oferta Laboral");
 				btnListarOfertaLaboral.setEnabled(false);
 				buttonPane.add(btnListarOfertaLaboral);
 			}
 			{
-				JButton btnCrearOfertaLaboral = new JButton("Crear Oferta Laboral");
+				btnCrearOfertaLaboral = new JButton("Crear Oferta Laboral");
 				btnCrearOfertaLaboral.setEnabled(false);
 				btnCrearOfertaLaboral.setActionCommand("OK");
 				buttonPane.add(btnCrearOfertaLaboral);
 				getRootPane().setDefaultButton(btnCrearOfertaLaboral);
 			}
 			{
-				JButton btnSalir = new JButton("Salir");
+				btnSalir = new JButton("Salir");
 				btnSalir.setActionCommand("Cancel");
 				buttonPane.add(btnSalir);
 			}
 		}
+		loadtable();
+	}
+
+	private void loadtable() {
+		rows = new Object[model.getColumnCount()];
+		model.setRowCount(0);
+		for(int i =0; i<Bolsa.getInstance().getEmpresas().size();i++) {
+			rows[0] = Bolsa.getInstance().getEmpresas().get(i).getRNC();
+			rows[1] = Bolsa.getInstance().getEmpresas().get(i).getNombre();
+			rows[2] = Bolsa.getInstance().getEmpresas().get(i).getTelefono();
+			rows[3] = Bolsa.getInstance().getEmpresas().get(i).getDireccion();
+			
+			model.addRow(rows);
+		}
+		
 	}
 
 }

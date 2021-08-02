@@ -11,6 +11,9 @@ import javax.swing.border.TitledBorder;
 
 import Logico.Aspirante;
 import Logico.Bolsa;
+import Logico.Obrero;
+import Logico.Tecnico;
+import Logico.Universitario;
 
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
@@ -46,6 +49,9 @@ public class RegistrarSolicitudLaboral extends JDialog {
 	private JTextField txtCarrera;
 	private JTextField txtArea;
 	private JTextField txtYearsExperiencia;
+	private JPanel panelObrero;
+	private JPanel panelTecnico;
+	private JPanel panelUniversitario;
 
 	/**
 	 * Launch the applicatio
@@ -212,13 +218,35 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtNivelAcademico = new JTextField();
 					txtNivelAcademico.setEditable(false);
-				//	txtNivelAcademico.setText(getName());
+					if(aspirante instanceof Obrero) {
+						txtNivelAcademico.setText("Obrero");
+						txtOficio1.setText(((Obrero) aspirante).getOficio1());
+						txtOficio2.setText(((Obrero) aspirante).getOficio2());
+						txtOficio3.setText(((Obrero) aspirante).getOficio3());
+						txtOficio4.setText(((Obrero) aspirante).getOficio4());
+						panelTecnico.setVisible(false);
+						panelUniversitario.setVisible(false);
+						System.out.println("Obrero");
+					}else if(aspirante instanceof Tecnico) { 
+						txtNivelAcademico.setText("Técnico");
+						txtArea.setText(((Tecnico) aspirante).getArea());
+						txtYearsExperiencia.setText(String.valueOf(((Tecnico) aspirante).getYearsExperiencia()));
+						panelObrero.setVisible(false);
+						panelUniversitario.setVisible(false);
+						System.out.println("Tecnico");
+					}else if(aspirante instanceof Universitario) { 
+						txtNivelAcademico.setText("Universitario");
+						panelTecnico.setVisible(false);
+						panelObrero.setVisible(false);	
+						txtCarrera.setText(((Universitario) aspirante).getCarrera());
+						System.out.println("Universitario");
+					}
 					txtNivelAcademico.setBounds(126, 258, 298, 22);
 					panelLeft.add(txtNivelAcademico);
 					txtNivelAcademico.setColumns(10);
 				}
 				{
-					JPanel panelObrero = new JPanel();
+					panelObrero = new JPanel();
 					panelObrero.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 					panelObrero.setBounds(12, 290, 412, 80);
 					panelLeft.add(panelObrero);
@@ -272,7 +300,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 					txtDireccion.setColumns(10);
 				}
 				{
-					JPanel panelTecnico = new JPanel();
+					panelTecnico = new JPanel();
 					panelTecnico.setLayout(null);
 					panelTecnico.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 					panelTecnico.setBounds(12, 290, 412, 80);
@@ -303,7 +331,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 					}
 				}
 				{
-					JPanel panelUniversitario = new JPanel();
+					panelUniversitario = new JPanel();
 					panelUniversitario.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 					panelUniversitario.setBounds(12, 290, 412, 80);
 					panelLeft.add(panelUniversitario);
