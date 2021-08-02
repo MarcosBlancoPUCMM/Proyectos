@@ -8,6 +8,10 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+
+import Logico.Aspirante;
+import Logico.Bolsa;
+
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -21,24 +25,24 @@ import java.awt.event.ActionEvent;
 public class SolicitudLaboral extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField txtNombre;
+	private JTextField txtApellido;
+	private JTextField txtEdad;
+	private JTextField txtSexo;
+	private JTextField txtCedula;
+	private JTextField txtEstadoCivil;
 	private JTextField txtPais;
 	private JTextField txtCiudad;
 	private JTextField txtNacionalidad;
-	private JTextField textField_6;
-	private JTextField textField_8;
+	private JTextField txtNivelAcademico;
+	private JTextField txtSueldoEsperado;
 	private JTextField txtOficio1;
 	private JTextField txtOficio2;
 	private JTextField txtOficio3;
 	private JTextField txtOficio4;
 	private JTextField txtCorreo;
 	private JTextField txtTelefono;
-	private JTextField textField_9;
+	private JTextField txtDireccion;
 	private JTextField txtCarrera;
 	private JTextField txtArea;
 	private JTextField txtYearsExperiencia;
@@ -93,18 +97,18 @@ public class SolicitudLaboral extends JDialog {
 					panelLeft.add(lblNombre);
 				}
 				{
-					textField = new JTextField();
-					textField.setEditable(false);
-					textField.setBounds(74, 54, 168, 22);
-					panelLeft.add(textField);
-					textField.setColumns(10);
+					txtNombre = new JTextField();
+					txtNombre.setEditable(false);
+					txtNombre.setBounds(74, 54, 168, 22);
+					panelLeft.add(txtNombre);
+					txtNombre.setColumns(10);
 				}
 				{
-					textField_1 = new JTextField();
-					textField_1.setEditable(false);
-					textField_1.setBounds(254, 54, 170, 22);
-					panelLeft.add(textField_1);
-					textField_1.setColumns(10);
+					txtApellido = new JTextField();
+					txtApellido.setEditable(false);
+					txtApellido.setBounds(254, 54, 170, 22);
+					panelLeft.add(txtApellido);
+					txtApellido.setColumns(10);
 				}
 				{
 					JLabel lblEdad = new JLabel("Edad:");
@@ -112,11 +116,11 @@ public class SolicitudLaboral extends JDialog {
 					panelLeft.add(lblEdad);
 				}
 				{
-					textField_2 = new JTextField();
-					textField_2.setEditable(false);
-					textField_2.setBounds(74, 83, 40, 22);
-					panelLeft.add(textField_2);
-					textField_2.setColumns(10);
+					txtEdad = new JTextField();
+					txtEdad.setEditable(false);
+					txtEdad.setBounds(74, 83, 40, 22);
+					panelLeft.add(txtEdad);
+					txtEdad.setColumns(10);
 				}
 				{
 					JLabel lblSexo = new JLabel("Sexo:");
@@ -124,11 +128,11 @@ public class SolicitudLaboral extends JDialog {
 					panelLeft.add(lblSexo);
 				}
 				{
-					textField_3 = new JTextField();
-					textField_3.setEditable(false);
-					textField_3.setBounds(74, 112, 116, 22);
-					panelLeft.add(textField_3);
-					textField_3.setColumns(10);
+					txtSexo = new JTextField();
+					txtSexo.setEditable(false);
+					txtSexo.setBounds(74, 112, 116, 22);
+					panelLeft.add(txtSexo);
+					txtSexo.setColumns(10);
 				}
 				{
 					JLabel lblCedula = new JLabel("C\u00E9dula de Identidad:");
@@ -136,11 +140,11 @@ public class SolicitudLaboral extends JDialog {
 					panelLeft.add(lblCedula);
 				}
 				{
-					textField_4 = new JTextField();
-					textField_4.setEditable(false);
-					textField_4.setBounds(254, 83, 170, 22);
-					panelLeft.add(textField_4);
-					textField_4.setColumns(10);
+					txtCedula = new JTextField();
+					txtCedula.setEditable(false);
+					txtCedula.setBounds(254, 83, 170, 22);
+					panelLeft.add(txtCedula);
+					txtCedula.setColumns(10);
 				}
 				{
 					JLabel lblEstadoCivil = new JLabel("Estado Civil:");
@@ -148,11 +152,11 @@ public class SolicitudLaboral extends JDialog {
 					panelLeft.add(lblEstadoCivil);
 				}
 				{
-					textField_5 = new JTextField();
-					textField_5.setEditable(false);
-					textField_5.setBounds(284, 112, 140, 22);
-					panelLeft.add(textField_5);
-					textField_5.setColumns(10);
+					txtEstadoCivil = new JTextField();
+					txtEstadoCivil.setEditable(false);
+					txtEstadoCivil.setBounds(284, 112, 140, 22);
+					panelLeft.add(txtEstadoCivil);
+					txtEstadoCivil.setColumns(10);
 				}
 				{
 					JSeparator separator = new JSeparator();
@@ -206,11 +210,11 @@ public class SolicitudLaboral extends JDialog {
 					panelLeft.add(lblNivelAcademico);
 				}
 				{
-					textField_6 = new JTextField();
-					textField_6.setEditable(false);
-					textField_6.setBounds(126, 258, 298, 22);
-					panelLeft.add(textField_6);
-					textField_6.setColumns(10);
+					txtNivelAcademico = new JTextField();
+					txtNivelAcademico.setEditable(false);
+					txtNivelAcademico.setBounds(126, 258, 298, 22);
+					panelLeft.add(txtNivelAcademico);
+					txtNivelAcademico.setColumns(10);
 				}
 				{
 					JPanel panelObrero = new JPanel();
@@ -258,11 +262,11 @@ public class SolicitudLaboral extends JDialog {
 					panelLeft.add(lblDireccion);
 				}
 				{
-					textField_9 = new JTextField();
-					textField_9.setEditable(false);
-					textField_9.setBounds(74, 214, 350, 22);
-					panelLeft.add(textField_9);
-					textField_9.setColumns(10);
+					txtDireccion = new JTextField();
+					txtDireccion.setEditable(false);
+					txtDireccion.setBounds(74, 214, 350, 22);
+					panelLeft.add(txtDireccion);
+					txtDireccion.setColumns(10);
 				}
 				{
 					JPanel panelTecnico = new JPanel();
@@ -372,10 +376,10 @@ public class SolicitudLaboral extends JDialog {
 					panelRight.add(lblPaga);
 				}
 				{
-					textField_8 = new JTextField();
-					textField_8.setBounds(126, 158, 194, 22);
-					panelRight.add(textField_8);
-					textField_8.setColumns(10);
+					txtSueldoEsperado = new JTextField();
+					txtSueldoEsperado.setBounds(126, 158, 194, 22);
+					panelRight.add(txtSueldoEsperado);
+					txtSueldoEsperado.setColumns(10);
 				}
 				{
 					JLabel lblTecnologia = new JLabel("Tecnolog\u00EDa:");
@@ -439,6 +443,11 @@ public class SolicitudLaboral extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnEnviar = new JButton("Enviar");
+				btnEnviar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						SolicitudLaboral aux = null;
+					}
+				});
 				btnEnviar.setActionCommand("OK");
 				buttonPane.add(btnEnviar);
 				getRootPane().setDefaultButton(btnEnviar);

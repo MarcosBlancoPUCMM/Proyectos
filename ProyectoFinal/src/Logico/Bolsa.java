@@ -113,8 +113,15 @@ public class Bolsa {
 		return logrado;
 	}
 	
-	
-	
+	public Aspirante findAspiranteByCedula(String cedula) {
+		for (Aspirante aspirante : aspirantes) {
+			if (aspirante.getCedula().equalsIgnoreCase(cedula)) {
+				return aspirante;
+			}
+		}
+		return null;
+	}
+
 	public void generarReporte() {
 		
 	}
