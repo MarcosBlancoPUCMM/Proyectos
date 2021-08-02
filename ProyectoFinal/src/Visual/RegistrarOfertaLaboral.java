@@ -356,7 +356,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 				JButton btnCrear = new JButton("Crear");
 				btnCrear.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
+						/*
 						String sexo = "N/A";
 						String estadocivil = "N/A";
 						String ocupacion = "N/A";
@@ -398,6 +398,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 						Bolsa.getInstance().registrarOferta(aux);
 						JOptionPane.showMessageDialog(null, "Oferta Laboral Registrada","Registro de Oferta Laboral", JOptionPane.INFORMATION_MESSAGE);
 						clean();
+						*/
 					}							
 				});
 				btnCrear.setActionCommand("OK");

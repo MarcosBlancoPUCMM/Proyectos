@@ -2,22 +2,24 @@ package Logico;
 
 public class OfertaLaboral {
 
-	private String nombre, tipo, carrera, area, nacionalidad, ocipacion, sexo, estadoCivil;
+	private String nombre, carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadoCivil;
 	private int cantAspirantes, yearsExperiencia, edad;
 	private boolean completado, espanol, ingles, frances, dispuestoMudarse, licenciaConducir, trabajoParcial, microsoftOffice, adobe;
 	private float paga;
 	
-	public OfertaLaboral(String nombre, String tipo, String carrera, String area, String nacionalidad, String ocipacion,
+	public OfertaLaboral(String nombre, String carrera, String area, String nacionalidad, String oficio1, String oficio2, String oficio3, String oficio4,
 			String sexo, String estadoCivil, int cantAspirantes, int yearsExperiencia, int edad, boolean completado,
 			boolean espanol, boolean ingles, boolean frances, boolean dispuestoMudarse, boolean licenciaConducir,
 			boolean trabajoParcial, boolean microsoftOffice, boolean adobe, float paga) {
 		super();
 		this.nombre = nombre;
-		this.tipo = tipo;
 		this.carrera = carrera;
 		this.area = area;
 		this.nacionalidad = nacionalidad;
-		this.ocipacion = ocipacion;
+		this.oficio1 = oficio1;
+		this.oficio2 = oficio2;
+		this.oficio3 = oficio3;
+		this.oficio4 = oficio4;
 		this.sexo = sexo;
 		this.estadoCivil = estadoCivil;
 		this.cantAspirantes = cantAspirantes;
@@ -41,12 +43,6 @@ public class OfertaLaboral {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
 	public String getCarrera() {
 		return carrera;
 	}
@@ -65,11 +61,29 @@ public class OfertaLaboral {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-	public String getOcipacion() {
-		return ocipacion;
+	public String getOficio1() {
+		return oficio1;
 	}
-	public void setOcipacion(String ocipacion) {
-		this.ocipacion = ocipacion;
+	public void setOficio1(String oficio1) {
+		this.oficio1 = oficio1;
+	}
+	public String getOficio2() {
+		return oficio2;
+	}
+	public void setOficio2(String oficio2) {
+		this.oficio2 = oficio2;
+	}
+	public String getOficio3() {
+		return oficio3;
+	}
+	public void setOficio3(String oficio3) {
+		this.oficio3 = oficio3;
+	}
+	public String getOficio4() {
+		return oficio4;
+	}
+	public void setOficio4(String oficio4) {
+		this.oficio4 = oficio4;
 	}
 	public String getSexo() {
 		return sexo;

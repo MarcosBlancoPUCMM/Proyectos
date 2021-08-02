@@ -11,7 +11,6 @@ import javax.swing.border.TitledBorder;
 
 import Logico.Aspirante;
 import Logico.Bolsa;
-import Logico.SolicitudLaboral;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -396,8 +395,6 @@ public class RegistrarAspirante extends JDialog {
 						Bolsa.getInstance().registrarAspirante(aux);
 						JOptionPane.showMessageDialog(null, "Aspirante Registrado", "Registro de Aspirante", JOptionPane.INFORMATION_MESSAGE);
 						clean();
-						
-					
 					}
 				});
 				btnRegistrar.setActionCommand("OK");
@@ -432,6 +429,5 @@ public class RegistrarAspirante extends JDialog {
 		txtArea.setText(" ");
 		txtYearsExperiencia.setText(" ");
 		txtCarrera.setText(" ");
-		
 	}
 }
