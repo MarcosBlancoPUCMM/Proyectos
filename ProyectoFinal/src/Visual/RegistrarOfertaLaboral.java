@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import Logico.Bolsa;
+import Logico.Empresa;
 import Logico.OfertaLaboral;
 
 import javax.swing.JLabel;
@@ -57,21 +58,13 @@ public class RegistrarOfertaLaboral extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			RegistrarOfertaLaboral dialog = new RegistrarOfertaLaboral();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+
 
 	/**
 	 * Create the dialog.
+	 * @param selected 
 	 */
-	public RegistrarOfertaLaboral() {
+	public RegistrarOfertaLaboral(Empresa empresa) {
 		setTitle("Oferta Laboral");
 		setBounds(100, 100, 866, 488);
 		getContentPane().setLayout(new BorderLayout());
@@ -116,6 +109,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 
 			txtEmpresa = new JTextField();
 			txtEmpresa.setEditable(false);
+			txtEmpresa.setText(empresa.getNombre());
 			txtEmpresa.setBounds(80, 10, 330, 22);
 			panelLeft.add(txtEmpresa);
 			txtEmpresa.setColumns(10);

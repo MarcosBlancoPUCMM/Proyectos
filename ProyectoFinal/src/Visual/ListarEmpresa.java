@@ -18,6 +18,8 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ListarEmpresa extends JDialog {
 
@@ -90,11 +92,25 @@ public class ListarEmpresa extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				btnListarOfertaLaboral = new JButton("Listar Oferta Laboral");
+				btnListarOfertaLaboral.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ListarOfertaLaboral listarofertalaboral = new ListarOfertaLaboral(selected);
+						listarofertalaboral.setModal(true);
+						listarofertalaboral.setVisible(true);
+					}
+				});
 				btnListarOfertaLaboral.setEnabled(false);
 				buttonPane.add(btnListarOfertaLaboral);
 			}
 			{
 				btnCrearOfertaLaboral = new JButton("Crear Oferta Laboral");
+				btnCrearOfertaLaboral.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						RegistrarOfertaLaboral registrarofertalaboral = new RegistrarOfertaLaboral(selected);
+						registrarofertalaboral.setModal(true);
+						registrarofertalaboral.setVisible(true);
+					}
+				});
 				btnCrearOfertaLaboral.setEnabled(false);
 				btnCrearOfertaLaboral.setActionCommand("OK");
 				buttonPane.add(btnCrearOfertaLaboral);

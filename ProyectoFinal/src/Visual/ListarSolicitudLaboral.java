@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Logico.Aspirante;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -19,20 +22,12 @@ public class ListarSolicitudLaboral extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			ListarSolicitudLaboral dialog = new ListarSolicitudLaboral();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
+	 * @param aspirante 
 	 */
-	public ListarSolicitudLaboral() {
+	public ListarSolicitudLaboral(Aspirante aspirante) {
 		setTitle("Lista de Solicitud Laboral");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());

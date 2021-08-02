@@ -94,6 +94,13 @@ public class ListarAspirante extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				btnListarSolicitudLaboral = new JButton("Listar Solicitud Laboral");
+				btnListarSolicitudLaboral.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ListarSolicitudLaboral listarsolicitudlaboral = new ListarSolicitudLaboral(selected);
+						listarsolicitudlaboral.setModal(true);
+						listarsolicitudlaboral.setVisible(true);
+					}
+				});
 				btnListarSolicitudLaboral.setEnabled(false);
 				buttonPane.add(btnListarSolicitudLaboral);
 			}
