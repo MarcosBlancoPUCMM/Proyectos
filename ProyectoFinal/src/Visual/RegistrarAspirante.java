@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class RegistrarAspirante extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
+	private JTextField txtNombre;
 	private JTextField txtApellidos;
 	private JTextField txtCedula;
 	private JTextField txtEdad;
@@ -89,10 +89,10 @@ public class RegistrarAspirante extends JDialog {
 			lblNombre.setBounds(124, 13, 56, 16);
 			panel.add(lblNombre);
 			
-			textField = new JTextField();
-			textField.setBounds(192, 10, 218, 22);
-			panel.add(textField);
-			textField.setColumns(10);
+			txtNombre = new JTextField();
+			txtNombre.setBounds(192, 10, 218, 22);
+			panel.add(txtNombre);
+			txtNombre.setColumns(10);
 			{
 				JLabel lblApellidos = new JLabel("Apellidos:");
 				lblApellidos.setBounds(124, 42, 56, 16);
@@ -391,8 +391,9 @@ public class RegistrarAspirante extends JDialog {
 							estadocivil = "Viudo";
 						}
 						
-						Aspirante aux = new Aspirante(null, textField.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", "N/A", txtCiudad.getText(), txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, false, Integer.valueOf(txtEdad.getText()));
+						Aspirante aux = new Aspirante(null, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtCiudad.getText(), txtNacionalidad.getText(), txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, false, Integer.valueOf(txtEdad.getText()));
 						Bolsa.getInstance().registrarAspirante(aux);
+					//	System.out.println("linea 396 de registrar aspirante");
 						JOptionPane.showMessageDialog(null, "Aspirante Registrado", "Registro de Aspirante", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
@@ -414,13 +415,13 @@ public class RegistrarAspirante extends JDialog {
 		}
 	}
 	private void clean() {
-		textField.setText(" ");
+		txtNombre.setText(" ");
 		txtApellidos.setText(" ");
 		txtCiudad.setText(" ");
 		txtCedula.setText(" ");
 		txtPais.setText(" ");
 		txtCorreo.setText(" ");
-		txtEdad.setText(" ");
+		txtEdad.setText("");
 		txtNacionalidad.setText(" ");
 		txtOficio1.setText(" ");
 		txtOficio2.setText(" ");
