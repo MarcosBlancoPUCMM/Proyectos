@@ -7,14 +7,31 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import Logico.Aspirante;
+import Logico.Bolsa;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ListarAspirante extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
+	private static DefaultTableModel model;
+	private static Object rows[];
+	private JButton btnListarSolicitudLaboral;
+	private JButton btnCrearSolicitudLaboral;
+	private Aspirante selected = null;
+	private Aspirante aux = null;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -47,8 +64,27 @@ public class ListarAspirante extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
+					String headers[] = {"Cédula", "Nombre", "Apellidos", "Edad", "Estado"};
+					
+					model = new DefaultTableModel();
+					model.setColumnIdentifiers(headers);
 					table = new JTable();
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							int index = -1;
+							index = table.getSelectedRow();
+							if(index!=-1) {
+								btnListarSolicitudLaboral.setEnabled(true);
+								btnCrearSolicitudLaboral.setEnabled(true);
+								String cedula = (String)model.getValueAt(index, 0);
+								selected = Bolsa.getInstance().findAspiranteByCedula(cedula);
+								
+							}
+						}
+					});
+					table.setModel(model);
 					scrollPane.setViewportView(table);
 				}
 			}
@@ -58,16 +94,23 @@ public class ListarAspirante extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnListarSolicitudLaboral = new JButton("Listar Solicitud Laboral");
+				btnListarSolicitudLaboral = new JButton("Listar Solicitud Laboral");
 				btnListarSolicitudLaboral.setEnabled(false);
 				buttonPane.add(btnListarSolicitudLaboral);
 			}
 			{
-				JButton btnSolicitudLaboral = new JButton("Crear Solicitud Laboral");
-				btnSolicitudLaboral.setEnabled(false);
-				btnSolicitudLaboral.setActionCommand("OK");
-				buttonPane.add(btnSolicitudLaboral);
-				getRootPane().setDefaultButton(btnSolicitudLaboral);
+				btnCrearSolicitudLaboral = new JButton("Crear Solicitud Laboral");
+				btnCrearSolicitudLaboral.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						RegistrarSolicitudLaboral aux = new RegistrarSolicitudLaboral();
+						aux.setModal(true);
+						aux.setVisible(true);
+					}
+				});
+				btnCrearSolicitudLaboral.setEnabled(false);
+				btnCrearSolicitudLaboral.setActionCommand("OK");
+				buttonPane.add(btnCrearSolicitudLaboral);
+				getRootPane().setDefaultButton(btnCrearSolicitudLaboral);
 			}
 			{
 				JButton btnSalir = new JButton("Salir");
@@ -75,6 +118,22 @@ public class ListarAspirante extends JDialog {
 				buttonPane.add(btnSalir);
 			}
 		}
+		loadtable();
 	}
 
+	private void loadtable() {
+		rows = new Object[model.getColumnCount()];
+		model.setRowCount(0);
+		for(int i = 0; i< Bolsa.getInstance().getAspirantes().size();i++) {
+			rows[0] = Bolsa.getInstance().getAspirantes().get(i).getCedula();
+			rows[1] = Bolsa.getInstance().getAspirantes().get(i).getNombre();
+			rows[2] = Bolsa.getInstance().getAspirantes().get(i).getApellidos();
+			rows[3] = Bolsa.getInstance().getAspirantes().get(i).getEdad();
+			rows[4] = Bolsa.getInstance().getAspirantes().get(i).isEstado();
+					
+			
+		}
+		
+	}
+	
 }

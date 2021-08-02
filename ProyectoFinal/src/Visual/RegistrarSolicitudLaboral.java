@@ -22,7 +22,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class SolicitudLaboral extends JDialog {
+public class RegistrarSolicitudLaboral extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtNombre;
@@ -52,7 +52,7 @@ public class SolicitudLaboral extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			SolicitudLaboral dialog = new SolicitudLaboral();
+			RegistrarSolicitudLaboral dialog = new RegistrarSolicitudLaboral();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -63,7 +63,7 @@ public class SolicitudLaboral extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public SolicitudLaboral() {
+	public RegistrarSolicitudLaboral() {
 		setTitle("Solicitud Laboral");
 		setBounds(100, 100, 800, 472);
 		getContentPane().setLayout(new BorderLayout());
@@ -445,7 +445,7 @@ public class SolicitudLaboral extends JDialog {
 				JButton btnEnviar = new JButton("Enviar");
 				btnEnviar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						SolicitudLaboral aux = null;
+						RegistrarSolicitudLaboral aux = null;
 					}
 				});
 				btnEnviar.setActionCommand("OK");
