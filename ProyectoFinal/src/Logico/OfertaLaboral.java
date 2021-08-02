@@ -2,7 +2,7 @@ package Logico;
 
 public class OfertaLaboral {
 
-	private String nombre, tipo, carrera, area, nacionalidad, ocipacion, sexo, estadoCivil;
+	private String nombre, tipo, carrera, area, nacionalidad, ocupacion, sexo, estadoCivil;
 	private int cantAspirantes, yearsExperiencia, edad;
 	private boolean completado, espanol, ingles, frances, dispuestoMudarse, licenciaConducir, trabajoParcial, microsoftOffice, adobe;
 	private float paga;
@@ -17,10 +17,10 @@ public class OfertaLaboral {
 		this.carrera = carrera;
 		this.area = area;
 		this.nacionalidad = nacionalidad;
-		this.ocipacion = ocipacion;
+		this.ocupacion = ocipacion;
 		this.sexo = sexo;
 		this.estadoCivil = estadoCivil;
-		this.cantAspirantes = cantAspirantes;
+		this.cantAspirantes = 0;
 		this.yearsExperiencia = yearsExperiencia;
 		this.edad = edad;
 		this.completado = completado;
@@ -65,11 +65,11 @@ public class OfertaLaboral {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-	public String getOcipacion() {
-		return ocipacion;
+	public String getOcupacion() {
+		return ocupacion;
 	}
-	public void setOcipacion(String ocipacion) {
-		this.ocipacion = ocipacion;
+	public void setOcupacion(String ocipacion) {
+		this.ocupacion = ocipacion;
 	}
 	public String getSexo() {
 		return sexo;

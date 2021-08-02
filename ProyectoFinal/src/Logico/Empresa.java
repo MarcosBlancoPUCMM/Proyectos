@@ -37,9 +37,11 @@ public class Empresa {
 	public String getRNC() {
 		return RNC;
 	}
+	
 	public void setRNC(String rNC) {
 		RNC = rNC;
 	}
+	
 	public ArrayList<OfertaLaboral> getOfertas() {
 		return ofertas;
 	}

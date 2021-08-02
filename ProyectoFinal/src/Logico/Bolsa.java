@@ -113,7 +113,56 @@ public class Bolsa {
 		return logrado;
 	}
 	
-	
+	public int comparadorOfertas(ArrayList<SolicitudLaboral> solicitudes, OfertaLaboral oferta) {
+		int aux = 0;
+		int contador;
+		int masAlto = 0;
+		int ganador = 0;
+		
+		for(int i =0; i<=solicitudes.size(); i++){
+		contador = 0;
+			if(oferta.getOcupacion()==solicitudes.get(i).getOcupacion() && solicitudes.get(i).isLibre()) {
+				aux++;
+				oferta.setCantAspirantes(aux);
+				if(oferta.getEdad()==solicitudes.get(i).getEdad()) { contador++;}
+				if(oferta.getEstadoCivil()==solicitudes.get(i).getEstadoCivil()) { contador++;}
+				if(oferta.getNacionalidad()==solicitudes.get(i).getNacionalidad()) { contador++;}
+				if(oferta.getPaga()>=(solicitudes.get(i).getPaga()-1000) && oferta.getPaga()>=(solicitudes.get(i).getPaga()+1000)) { contador++;}
+				if(oferta.getSexo()==solicitudes.get(i).getSexo()) { contador++;}
+				if(oferta.isAdobe()==solicitudes.get(i).isAdobe()) { contador++;}
+				if(oferta.isDispuestoMudarse()==solicitudes.get(i).isDispuestoMudarse()) { contador++;}
+				if(oferta.isEspanol()==solicitudes.get(i).isEspanol()) { contador++;}
+				if(oferta.isFrances()==solicitudes.get(i).isFrances()) { contador++;}
+				if(oferta.isIngles()==solicitudes.get(i).isIngles()) { contador++;}
+				if(oferta.isLicenciaConducir()==solicitudes.get(i).isLicenciaConducir()) { contador++;}
+				if(oferta.isMicrosoftOffice()==solicitudes.get(i).isMicrosoftOffice()) { contador++;}
+				if(oferta.isTrabajoParcial()==solicitudes.get(i).isTrabajoParcial()) { contador++;}
+				
+				//Tecnico
+				if(oferta.getOcupacion()=="Tecnico") {
+				if(oferta.getYearsExperiencia()<=solicitudes.get(i).getYearsExperiencia()) { contador++; contador++;}
+				if(oferta.getArea()==solicitudes.get(i).getArea()) { contador++;}
+				}
+				
+				//Obrero
+				if(oferta.getOcupacion()=="Obrero") {
+			//	if(oferta.()==solicitudes.get(i).getArea()) { contador++;}
+				}
+				
+				//Universitario
+				if(oferta.getOcupacion()=="Universitario") {
+				if(oferta.getCarrera()==solicitudes.get(i).getCarrera()) { contador++; contador++;}
+				}
+				
+				if(contador>=masAlto) {masAlto=contador;
+				ganador=i;
+				}
+			}
+			
+		}
+		
+		return ganador;
+	}
 	
 	public void generarReporte() {
 		

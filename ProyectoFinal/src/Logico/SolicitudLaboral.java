@@ -3,16 +3,16 @@ package Logico;
 public class SolicitudLaboral {
 
 	private boolean libre, espanol, ingles, frances, dispuestoMudarse, licenciaConducir, trabajoParcial, microsoftOffice, adobe;
-	private String nombre, tipo, carrera, area, nacionalidad, ocipacion, sexo, estadoCivil;
+	private String nombre, tipo, carrera, area, nacionalidad, ocupacion, sexo, estadoCivil;
 	private int yearsExperiencia, edad;
 	private float paga;
 	
-	public SolicitudLaboral(boolean libre, boolean espanol, boolean ingles, boolean frances, boolean dispuestoMudarse,
+	public SolicitudLaboral(boolean espanol, boolean ingles, boolean frances, boolean dispuestoMudarse,
 			boolean licenciaConducir, boolean trabajoParcial, boolean microsoftOffice, boolean adobe, String nombre,
 			String tipo, String carrera, String area, String nacionalidad, String ocipacion, String sexo,
 			String estadoCivil, int yearsExperiencia, int edad, float paga) {
 		super();
-		this.libre = libre;
+		this.libre = true;
 		this.espanol = espanol;
 		this.ingles = ingles;
 		this.frances = frances;
@@ -26,7 +26,7 @@ public class SolicitudLaboral {
 		this.carrera = carrera;
 		this.area = area;
 		this.nacionalidad = nacionalidad;
-		this.ocipacion = ocipacion;
+		this.ocupacion = ocipacion;
 		this.sexo = sexo;
 		this.estadoCivil = estadoCivil;
 		this.yearsExperiencia = yearsExperiencia;
@@ -118,11 +118,11 @@ public class SolicitudLaboral {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-	public String getOcipacion() {
-		return ocipacion;
+	public String getOcupacion() {
+		return ocupacion;
 	}
-	public void setOcipacion(String ocipacion) {
-		this.ocipacion = ocipacion;
+	public void setOcupacion(String ocipacion) {
+		this.ocupacion = ocipacion;
 	}
 	public String getSexo() {
 		return sexo;
