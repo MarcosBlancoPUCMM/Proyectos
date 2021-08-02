@@ -48,22 +48,13 @@ public class RegistrarSolicitudLaboral extends JDialog {
 	private JTextField txtYearsExperiencia;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			RegistrarSolicitudLaboral dialog = new RegistrarSolicitudLaboral();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	 * Launch the applicatio
 
 	/**
 	 * Create the dialog.
+	 * @param  
 	 */
-	public RegistrarSolicitudLaboral() {
+	public RegistrarSolicitudLaboral(Aspirante aspirante) {
 		setTitle("Solicitud Laboral");
 		setBounds(100, 100, 800, 472);
 		getContentPane().setLayout(new BorderLayout());
@@ -99,6 +90,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtNombre = new JTextField();
 					txtNombre.setEditable(false);
+					txtNombre.setText(aspirante.getNombre());
 					txtNombre.setBounds(74, 54, 168, 22);
 					panelLeft.add(txtNombre);
 					txtNombre.setColumns(10);
@@ -106,6 +98,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtApellido = new JTextField();
 					txtApellido.setEditable(false);
+					txtApellido.setText(aspirante.getApellidos());
 					txtApellido.setBounds(254, 54, 170, 22);
 					panelLeft.add(txtApellido);
 					txtApellido.setColumns(10);
@@ -118,6 +111,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtEdad = new JTextField();
 					txtEdad.setEditable(false);
+					txtEdad.setText(String.valueOf(aspirante.getEdad()));
 					txtEdad.setBounds(74, 83, 40, 22);
 					panelLeft.add(txtEdad);
 					txtEdad.setColumns(10);
@@ -130,6 +124,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtSexo = new JTextField();
 					txtSexo.setEditable(false);
+					txtSexo.setText(aspirante.getSexo());					
 					txtSexo.setBounds(74, 112, 116, 22);
 					panelLeft.add(txtSexo);
 					txtSexo.setColumns(10);
@@ -142,6 +137,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtCedula = new JTextField();
 					txtCedula.setEditable(false);
+					txtCedula.setText(aspirante.getCedula());
 					txtCedula.setBounds(254, 83, 170, 22);
 					panelLeft.add(txtCedula);
 					txtCedula.setColumns(10);
@@ -154,6 +150,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtEstadoCivil = new JTextField();
 					txtEstadoCivil.setEditable(false);
+					txtEstadoCivil.setText(aspirante.getEstadoCivil());
 					txtEstadoCivil.setBounds(284, 112, 140, 22);
 					panelLeft.add(txtEstadoCivil);
 					txtEstadoCivil.setColumns(10);
@@ -171,6 +168,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtPais = new JTextField();
 					txtPais.setEditable(false);
+					txtPais.setText(aspirante.getPais());
 					txtPais.setBounds(74, 156, 350, 22);
 					panelLeft.add(txtPais);
 					txtPais.setColumns(10);
@@ -183,6 +181,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtCiudad = new JTextField();
 					txtCiudad.setEditable(false);
+					txtCiudad.setText(aspirante.getCiudad());
 					txtCiudad.setBounds(74, 185, 126, 22);
 					panelLeft.add(txtCiudad);
 					txtCiudad.setColumns(10);
@@ -190,6 +189,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtNacionalidad = new JTextField();
 					txtNacionalidad.setEditable(false);
+					txtNacionalidad.setText(aspirante.getNacionalidad());
 					txtNacionalidad.setBounds(298, 185, 126, 22);
 					panelLeft.add(txtNacionalidad);
 					txtNacionalidad.setColumns(10);
@@ -212,6 +212,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtNivelAcademico = new JTextField();
 					txtNivelAcademico.setEditable(false);
+				//	txtNivelAcademico.setText(getName());
 					txtNivelAcademico.setBounds(126, 258, 298, 22);
 					panelLeft.add(txtNivelAcademico);
 					txtNivelAcademico.setColumns(10);
@@ -230,6 +231,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 					{
 						txtOficio1 = new JTextField();
 						txtOficio1.setEditable(false);
+						
 						txtOficio1.setBounds(74, 10, 150, 22);
 						panelObrero.add(txtOficio1);
 						txtOficio1.setColumns(10);
@@ -264,6 +266,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtDireccion = new JTextField();
 					txtDireccion.setEditable(false);
+					txtDireccion.setText(aspirante.getDireccion());
 					txtDireccion.setBounds(74, 214, 350, 22);
 					panelLeft.add(txtDireccion);
 					txtDireccion.setColumns(10);
@@ -425,6 +428,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtCorreo = new JTextField();
 					txtCorreo.setEditable(false);
+					txtCorreo.setText(aspirante.getCorreo());
 					txtCorreo.setBounds(76, 316, 248, 22);
 					panelRight.add(txtCorreo);
 					txtCorreo.setColumns(10);

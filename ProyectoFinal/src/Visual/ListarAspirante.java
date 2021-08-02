@@ -29,7 +29,6 @@ public class ListarAspirante extends JDialog {
 	private JButton btnListarSolicitudLaboral;
 	private JButton btnCrearSolicitudLaboral;
 	private Aspirante selected = null;
-	private Aspirante aux = null;
 	
 	
 
@@ -102,9 +101,9 @@ public class ListarAspirante extends JDialog {
 				btnCrearSolicitudLaboral = new JButton("Crear Solicitud Laboral");
 				btnCrearSolicitudLaboral.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						RegistrarSolicitudLaboral aux = new RegistrarSolicitudLaboral();
-						aux.setModal(true);
-						aux.setVisible(true);
+						RegistrarSolicitudLaboral registrarsolicitudlaboral = new RegistrarSolicitudLaboral(selected);
+						registrarsolicitudlaboral.setModal(true);
+						registrarsolicitudlaboral.setVisible(true);
 					}
 				});
 				btnCrearSolicitudLaboral.setEnabled(false);

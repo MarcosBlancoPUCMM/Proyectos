@@ -393,8 +393,7 @@ public class RegistrarAspirante extends JDialog {
 						
 						Aspirante aux = new Aspirante(null, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtCiudad.getText(), txtNacionalidad.getText(), txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, false, Integer.valueOf(txtEdad.getText()));
 						Bolsa.getInstance().registrarAspirante(aux);
-					//	System.out.println("linea 396 de registrar aspirante");
-						JOptionPane.showMessageDialog(null, "Aspirante Registrado", "Registro de Aspirante", JOptionPane.INFORMATION_MESSAGE);
+				     	JOptionPane.showMessageDialog(null, "Aspirante Registrado", "Registro de Aspirante", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
 				});
