@@ -162,4 +162,20 @@ public class Aspirante {
 		}
 		return aux;
 	}
+	public String buscarIndexSolicitud(String id) {
+		int i = 0;
+		boolean encontrado = false;
+		String aux = null;
+		while (i < solicitud.size() && !encontrado) {
+			if (solicitud.get(i).getId().equalsIgnoreCase(id)) {
+				aux = solicitud.get(i).getId();
+				encontrado = true;
+			}
+			i++;
+		}
+		return aux;
+			
+		
+		
+	}
 }

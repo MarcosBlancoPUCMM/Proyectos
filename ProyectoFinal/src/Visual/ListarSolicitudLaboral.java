@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +30,7 @@ public class ListarSolicitudLaboral extends JDialog {
 	private static DefaultTableModel model;
 	private static Object rows[];
 	private SolicitudLaboral selected = null;
+	private Aspirante aux = null;
 	private JButton btnSalir;
 	private JButton btnCancelar;
 
@@ -41,6 +43,7 @@ public class ListarSolicitudLaboral extends JDialog {
 	 * @param aspirante 
 	 */
 	public ListarSolicitudLaboral(Aspirante aspirante) {
+		aux = aspirante;
 		setTitle("Lista de Solicitud Laboral");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -68,9 +71,11 @@ public class ListarSolicitudLaboral extends JDialog {
 								btnCancelar.setEnabled(true);
 								String id = (String)model.getValueAt(index, 0);
 								selected = aspirante.buscarSolicitud(id);
+								
 							}
 						}
 					});
+					table.setModel(model);
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					scrollPane.setViewportView(table);
 				}
@@ -82,6 +87,14 @@ public class ListarSolicitudLaboral extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				btnCancelar = new JButton("Cancelar Solicitud");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int option = JOptionPane.showConfirmDialog(null,  "¿Desea cancelar la solicitud?");
+						if(option == JOptionPane.YES_OPTION) {
+							
+						}
+					}
+				});
 				btnCancelar.setEnabled(false);
 				btnCancelar.setActionCommand("OK");
 				buttonPane.add(btnCancelar);
@@ -97,7 +110,44 @@ public class ListarSolicitudLaboral extends JDialog {
 				btnSalir.setActionCommand("Cancel");
 				buttonPane.add(btnSalir);
 			}
+			loadtable();
 		}
+	}
+
+	private void loadtable() {
+		rows = new Object[model.getColumnCount()];
+		model.setRowCount(0);
+		
+		for(int i = 0; i< aux.getSolicitud().size();i++) {
+			rows[0] = aux.getSolicitud().get(i).getId();
+			rows[1] = aux.getSolicitud().get(i).getOcipacion();
+			if(aux.getSolicitud().get(i).isDispuestoMudarse()) {
+				rows[2] = "Si";
+			}else {
+				rows[2] = "No";
+			}
+			if(aux.getSolicitud().get(i).isLicenciaConducir()) {
+				rows[3] = "Si";
+			}else {
+				rows[3] = "No";
+			}if(aux.getSolicitud().get(i).isTrabajoParcial()) {
+				rows[4] = "Si";
+			}else {
+				rows[4] = "No";
+			}
+			if(aux.getSolicitud().get(i).isFrances() && aux.getSolicitud().get(i).isIngles() && aux.getSolicitud().get(i).isEspanol()) {
+				rows[5] = "Francés, Inglés y Español";
+			}else if(!aux.getSolicitud().get(i).isFrances() && aux.getSolicitud().get(i).isIngles() && aux.getSolicitud().get(i).isEspanol()){
+				rows[5] = "Inglés y Español";
+			}else if(!aux.getSolicitud().get(i).isFrances() && !aux.getSolicitud().get(i).isIngles() && aux.getSolicitud().get(i).isEspanol()){
+				rows[5] = "Español";
+			}else if(aux.getSolicitud().get(i).isFrances() && aux.getSolicitud().get(i).isIngles() && !aux.getSolicitud().get(i).isEspanol()){
+				rows[5] = "Inglés y Francés";
+			}
+					
+			model.addRow(rows);
+		}
+		
 	}
 
 }
