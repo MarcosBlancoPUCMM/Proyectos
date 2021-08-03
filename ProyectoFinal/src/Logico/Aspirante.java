@@ -149,5 +149,17 @@ public class Aspirante {
 		}
 		return logrado;
 	}
-	
+	public SolicitudLaboral buscarSolicitud(String id) {
+		int i = 0;
+		boolean encontrado = false;
+		SolicitudLaboral aux = null;
+		while (i < solicitud.size() && !encontrado) {
+			if (solicitud.get(i).getId().equalsIgnoreCase(id)) {
+				aux = solicitud.get(i);
+				encontrado = true;
+			}
+			i++;
+		}
+		return aux;
+	}
 }

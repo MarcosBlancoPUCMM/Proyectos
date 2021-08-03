@@ -3,12 +3,12 @@ package Logico;
 public class SolicitudLaboral {
 
 	private boolean libre, espanol, ingles, frances, dispuestoMudarse, licenciaConducir, trabajoParcial, microsoftOffice, adobe;
-	private String nombre, tipo, carrera, area, nacionalidad, ocipacion, sexo, estadoCivil;
+	private String id,nombre, tipo, carrera, area, nacionalidad, ocipacion, sexo, estadoCivil;
 	private int yearsExperiencia, edad;
 	private float paga;
 	
 	public SolicitudLaboral(boolean libre, boolean espanol, boolean ingles, boolean frances, boolean dispuestoMudarse,
-			boolean licenciaConducir, boolean trabajoParcial, boolean microsoftOffice, boolean adobe, String nombre,
+			boolean licenciaConducir, boolean trabajoParcial, boolean microsoftOffice, boolean adobe, String id, String nombre,
 			String tipo, String carrera, String area, String nacionalidad, String ocipacion, String sexo,
 			String estadoCivil, int yearsExperiencia, int edad, float paga) {
 		super();
@@ -21,6 +21,7 @@ public class SolicitudLaboral {
 		this.trabajoParcial = trabajoParcial;
 		this.microsoftOffice = microsoftOffice;
 		this.adobe = adobe;
+		this.id = id;
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.carrera = carrera;
@@ -87,6 +88,12 @@ public class SolicitudLaboral {
 	}
 	public void setAdobe(boolean adobe) {
 		this.adobe = adobe;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getNombre() {
 		return nombre;
