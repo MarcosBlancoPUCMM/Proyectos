@@ -67,6 +67,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 	public RegistrarOfertaLaboral(Empresa empresa) {
 		setTitle("Oferta Laboral");
 		setBounds(100, 100, 866, 488);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

@@ -56,6 +56,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 	public RegistrarSolicitudLaboral(Aspirante aspirante) {
 		setTitle("Solicitud Laboral");
 		setBounds(100, 100, 800, 472);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

@@ -1,6 +1,7 @@
 package Visual;
 
 import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -52,6 +53,7 @@ public class RegistrarAspirante extends JDialog {
 	private JRadioButton rdbtnHombre;
 	private JLabel lblDireccion;
 	private JTextField txtDireccion;
+	ImageIcon mainImage = new ImageIcon("Imagenes/userIcon.png");
 
 	/**
 	 * Launch the application.
@@ -72,6 +74,7 @@ public class RegistrarAspirante extends JDialog {
 	public RegistrarAspirante() {
 		setTitle("Registrar Aspirante");
 		setBounds(100, 100, 450, 515);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -85,6 +88,7 @@ public class RegistrarAspirante extends JDialog {
 				JLabel lblUserIcon = new JLabel("");
 				lblUserIcon.setBounds(12, 13, 100, 100);
 				panel.add(lblUserIcon);
+				lblUserIcon.setIcon(mainImage);
 			}
 			
 			JLabel lblNombre = new JLabel("Nombre:");
