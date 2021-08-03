@@ -30,9 +30,6 @@ public class Principal extends JFrame {
 						JFrame.setDefaultLookAndFeelDecorated(true);
 						JDialog.setDefaultLookAndFeelDecorated(true);
 						UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-						//UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-						//UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-						//UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
