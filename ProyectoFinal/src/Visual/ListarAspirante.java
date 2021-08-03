@@ -63,7 +63,7 @@ public class ListarAspirante extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"CÃ©dula", "Nombre", "Apellidos", "Edad", "Estado"};
+					String headers[] = {"Cédula", "Nombre", "Apellidos", "Edad", "Estado"};
 					
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
@@ -135,7 +135,11 @@ public class ListarAspirante extends JDialog {
 			rows[1] = Bolsa.getInstance().getAspirantes().get(i).getNombre();
 			rows[2] = Bolsa.getInstance().getAspirantes().get(i).getApellidos();
 			rows[3] = Bolsa.getInstance().getAspirantes().get(i).getEdad();
-			rows[4] = Bolsa.getInstance().getAspirantes().get(i).isEstado();
+			if (Bolsa.getInstance().getAspirantes().get(i).isEstado() == false) {
+				rows[4] = "Desempleado";
+			} else {
+				rows[4] = "Contratado";
+			}
 					
 			model.addRow(rows);
 		}

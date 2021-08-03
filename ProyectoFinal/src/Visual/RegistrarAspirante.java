@@ -50,6 +50,8 @@ public class RegistrarAspirante extends JDialog {
 	private JRadioButton rdbtnViudo;
 	private JRadioButton rdbtnMujer;
 	private JRadioButton rdbtnHombre;
+	private JLabel lblDireccion;
+	private JTextField txtDireccion;
 
 	/**
 	 * Launch the application.
@@ -69,7 +71,7 @@ public class RegistrarAspirante extends JDialog {
 	 */
 	public RegistrarAspirante() {
 		setTitle("Registrar Aspirante");
-		setBounds(100, 100, 450, 472);
+		setBounds(100, 100, 450, 515);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -158,7 +160,7 @@ public class RegistrarAspirante extends JDialog {
 			}
 			{
 				txtPais = new JTextField();
-				txtPais.setBounds(64, 137, 346, 22);
+				txtPais.setBounds(74, 137, 336, 22);
 				panel.add(txtPais);
 				txtPais.setColumns(10);
 			}
@@ -169,7 +171,7 @@ public class RegistrarAspirante extends JDialog {
 			}
 			{
 				txtCiudad = new JTextField();
-				txtCiudad.setBounds(64, 166, 126, 22);
+				txtCiudad.setBounds(74, 166, 116, 22);
 				panel.add(txtCiudad);
 				txtCiudad.setColumns(10);
 			}
@@ -184,7 +186,7 @@ public class RegistrarAspirante extends JDialog {
 			txtNacionalidad.setColumns(10);
 			{
 				JLabel lblEstadoCivil = new JLabel("Estado Civil:");
-				lblEstadoCivil.setBounds(12, 198, 72, 16);
+				lblEstadoCivil.setBounds(12, 230, 72, 16);
 				panel.add(lblEstadoCivil);
 			}
 			{
@@ -197,7 +199,7 @@ public class RegistrarAspirante extends JDialog {
 					}
 				});
 				rdbtnSoltero.setSelected(true);
-				rdbtnSoltero.setBounds(92, 194, 70, 25);
+				rdbtnSoltero.setBounds(92, 226, 70, 25);
 				panel.add(rdbtnSoltero);
 			}
 			{
@@ -210,7 +212,7 @@ public class RegistrarAspirante extends JDialog {
 					
 					}
 				});
-				rdbtnCasado.setBounds(212, 194, 70, 25);
+				rdbtnCasado.setBounds(212, 226, 70, 25);
 				panel.add(rdbtnCasado);
 			}
 			{
@@ -222,23 +224,23 @@ public class RegistrarAspirante extends JDialog {
 						rdbtnViudo.setSelected(true);
 					}
 				});
-				rdbtnViudo.setBounds(333, 194, 60, 25);
+				rdbtnViudo.setBounds(333, 226, 60, 25);
 				panel.add(rdbtnViudo);
 			}
 			{
 				JLabel lblCorreo = new JLabel("Correo Electr\u00F3nico:");
-				lblCorreo.setBounds(12, 227, 114, 16);
+				lblCorreo.setBounds(12, 262, 114, 16);
 				panel.add(lblCorreo);
 			}
 			{
 				txtCorreo = new JTextField();
-				txtCorreo.setBounds(138, 224, 272, 22);
+				txtCorreo.setBounds(138, 259, 272, 22);
 				panel.add(txtCorreo);
 				txtCorreo.setColumns(10);
 			}
 			{
 				JSeparator separator_1 = new JSeparator();
-				separator_1.setBounds(12, 256, 398, 1);
+				separator_1.setBounds(12, 291, 398, 1);
 				panel.add(separator_1);
 			}
 			{
@@ -255,7 +257,7 @@ public class RegistrarAspirante extends JDialog {
 					}
 				});
 				rdbtnObrero.setSelected(true);
-				rdbtnObrero.setBounds(12, 266, 70, 25);
+				rdbtnObrero.setBounds(12, 301, 70, 25);
 				panel.add(rdbtnObrero);
 			}
 			{
@@ -271,7 +273,7 @@ public class RegistrarAspirante extends JDialog {
 						panelUniversitario.setVisible(false);
 					}
 				});
-				rdbtnTecnico.setBounds(156, 266, 72, 25);
+				rdbtnTecnico.setBounds(156, 301, 72, 25);
 				panel.add(rdbtnTecnico);
 			}
 			{
@@ -287,13 +289,13 @@ public class RegistrarAspirante extends JDialog {
 						panelUniversitario.setVisible(true);
 					}
 				});
-				rdbtnUniversitario.setBounds(293, 266, 100, 25);
+				rdbtnUniversitario.setBounds(293, 301, 100, 25);
 				panel.add(rdbtnUniversitario);
 			}
 			{
 				panelObrero = new JPanel();
 				panelObrero.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				panelObrero.setBounds(12, 300, 398, 70);
+				panelObrero.setBounds(12, 335, 398, 70);
 				panel.add(panelObrero);
 				panelObrero.setLayout(null);
 				{
@@ -328,7 +330,7 @@ public class RegistrarAspirante extends JDialog {
 			}
 			{
 				panelTecnico = new JPanel();
-				panelTecnico.setBounds(12, 300, 398, 70);
+				panelTecnico.setBounds(12, 335, 398, 70);
 				panel.add(panelTecnico);
 				panelTecnico.setLayout(null);
 				{
@@ -356,7 +358,7 @@ public class RegistrarAspirante extends JDialog {
 			}
 			{
 				panelUniversitario = new JPanel();
-				panelUniversitario.setBounds(12, 300, 398, 70);
+				panelUniversitario.setBounds(12, 335, 398, 70);
 				panel.add(panelUniversitario);
 				panelUniversitario.setLayout(null);
 				{
@@ -370,6 +372,17 @@ public class RegistrarAspirante extends JDialog {
 					panelUniversitario.add(txtCarrera);
 					txtCarrera.setColumns(10);
 				}
+			}
+			{
+				lblDireccion = new JLabel("Direcci\u00F3n:");
+				lblDireccion.setBounds(12, 201, 62, 16);
+				panel.add(lblDireccion);
+			}
+			{
+				txtDireccion = new JTextField();
+				txtDireccion.setBounds(74, 198, 336, 22);
+				panel.add(txtDireccion);
+				txtDireccion.setColumns(10);
 			}
 		}
 		{
@@ -391,8 +404,17 @@ public class RegistrarAspirante extends JDialog {
 							estadocivil = "Viudo";
 						}
 						
-						Aspirante aux = new Aspirante(null, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtCiudad.getText(), txtNacionalidad.getText(), txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, false, Integer.valueOf(txtEdad.getText()));
-						Bolsa.getInstance().registrarAspirante(aux);
+						if (rdbtnObrero.isSelected()) {
+							Aspirante aux = new Aspirante(null, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtDireccion.getText(), txtNacionalidad.getText(),  txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, "Obrero", txtOficio1.getText(), txtOficio2.getText(), txtOficio3.getText(), txtOficio4.getText(), "N/A", "N/A", false, Integer.valueOf(txtEdad.getText()), 0);
+							Bolsa.getInstance().registrarAspirante(aux);
+						} else if (rdbtnTecnico.isSelected()) {
+							Aspirante aux = new Aspirante(null, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtDireccion.getText(), txtNacionalidad.getText(),  txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, "Técnico", "N/A", "N/A", "N/A", "N/A", txtArea.getText(), "N/A", false, Integer.valueOf(txtEdad.getText()), Integer.valueOf(txtYearsExperiencia.getText()));
+							Bolsa.getInstance().registrarAspirante(aux);
+						} else if (rdbtnUniversitario.isSelected()) {
+							Aspirante aux = new Aspirante(null, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtDireccion.getText(), txtNacionalidad.getText(),  txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, "Universitario", "N/A", "N/A", "N/A", "N/A", "N/A", txtCarrera.getText(), false, Integer.valueOf(txtEdad.getText()), 0);
+							Bolsa.getInstance().registrarAspirante(aux);
+						}
+						
 				     	JOptionPane.showMessageDialog(null, "Aspirante Registrado", "Registro de Aspirante", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
@@ -405,7 +427,7 @@ public class RegistrarAspirante extends JDialog {
 				JButton btnCancelar = new JButton("Cancelar");
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-					dispose();
+						dispose();
 					}
 				});
 				btnCancelar.setActionCommand("Cancel");

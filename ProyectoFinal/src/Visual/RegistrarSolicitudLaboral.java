@@ -10,16 +10,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import Logico.Aspirante;
-import Logico.Bolsa;
-import Logico.Obrero;
-import Logico.Tecnico;
-import Logico.Universitario;
-
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
 import javax.swing.JRadioButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -54,7 +47,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 	private JPanel panelUniversitario;
 
 	/**
-	 * Launch the applicatio
+	 * Launch the application
 
 	/**
 	 * Create the dialog.
@@ -218,29 +211,6 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				{
 					txtNivelAcademico = new JTextField();
 					txtNivelAcademico.setEditable(false);
-					if(aspirante instanceof Obrero) {
-						txtNivelAcademico.setText("Obrero");
-						txtOficio1.setText(((Obrero) aspirante).getOficio1());
-						txtOficio2.setText(((Obrero) aspirante).getOficio2());
-						txtOficio3.setText(((Obrero) aspirante).getOficio3());
-						txtOficio4.setText(((Obrero) aspirante).getOficio4());
-						panelTecnico.setVisible(false);
-						panelUniversitario.setVisible(false);
-						System.out.println("Obrero");
-					}else if(aspirante instanceof Tecnico) { 
-						txtNivelAcademico.setText("TÃ©cnico");
-						txtArea.setText(((Tecnico) aspirante).getArea());
-						txtYearsExperiencia.setText(String.valueOf(((Tecnico) aspirante).getYearsExperiencia()));
-						panelObrero.setVisible(false);
-						panelUniversitario.setVisible(false);
-						System.out.println("Tecnico");
-					}else if(aspirante instanceof Universitario) { 
-						txtNivelAcademico.setText("Universitario");
-						panelTecnico.setVisible(false);
-						panelObrero.setVisible(false);	
-						txtCarrera.setText(((Universitario) aspirante).getCarrera());
-						System.out.println("Universitario");
-					}
 					txtNivelAcademico.setBounds(126, 258, 298, 22);
 					panelLeft.add(txtNivelAcademico);
 					txtNivelAcademico.setColumns(10);
@@ -469,6 +439,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				}
 			}
 		}
+		loadAspirante(aspirante);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -494,6 +465,32 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				btnCancelar.setActionCommand("Cancel");
 				buttonPane.add(btnCancelar);
 			}
+		}
+	}
+	
+	public void loadAspirante(Aspirante aspirante) {
+		if (aspirante.getTipo().equalsIgnoreCase("Obrero")) {
+			txtNivelAcademico.setText("Obrero");
+			txtOficio1.setText(aspirante.getOficio1());
+			txtOficio2.setText(aspirante.getOficio2());
+			txtOficio3.setText(aspirante.getOficio3());
+			txtOficio4.setText(aspirante.getOficio4());
+			panelObrero.setVisible(true);
+			panelTecnico.setVisible(false);
+			panelUniversitario.setVisible(false);
+		} else if (aspirante.getTipo().equalsIgnoreCase("Técnico")) {
+			txtNivelAcademico.setText("Técnico");
+			txtArea.setText(aspirante.getArea());
+			txtYearsExperiencia.setText(String.valueOf(aspirante.getYearsExperiencia()));
+			panelTecnico.setVisible(true);
+			panelObrero.setVisible(false);
+			panelUniversitario.setVisible(false);
+		} else if (aspirante.getTipo().equalsIgnoreCase("Universitario")) {
+			txtNivelAcademico.setText("Universitario");
+			panelUniversitario.setVisible(true);
+			panelTecnico.setVisible(false);
+			panelObrero.setVisible(false);	
+			txtCarrera.setText(aspirante.getCarrera());
 		}
 	}
 }
