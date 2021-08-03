@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -24,6 +26,16 @@ public class Principal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					try {
+						JFrame.setDefaultLookAndFeelDecorated(true);
+						JDialog.setDefaultLookAndFeelDecorated(true);
+						UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+						//UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+						//UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+						//UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 					Principal frame = new Principal();
 					frame.setVisible(true);
 				} catch (Exception e) {
