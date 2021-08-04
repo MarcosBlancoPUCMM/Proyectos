@@ -103,7 +103,7 @@ public class Bolsa {
 		return aux;
 	}
 	
-	public boolean registrarEmpreza(Empresa empresa) {
+	public boolean registrarEmpresa(Empresa empresa) {
 		boolean logrado = false;
 		Empresa aux = buscarEmpresa(empresa.getRNC());
 		if (aux == null) {

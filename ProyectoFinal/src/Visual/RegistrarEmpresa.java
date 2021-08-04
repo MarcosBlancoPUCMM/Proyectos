@@ -102,7 +102,7 @@ public class RegistrarEmpresa extends JDialog {
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Empresa aux = new Empresa(txtNombre.getText(), txttelefono.getText(), txtDireccion.getText(), txtRNC.getText(), null);
-						Bolsa.getInstance().registrarEmpreza(aux);
+						Bolsa.getInstance().registrarEmpresa(aux);
 						JOptionPane.showMessageDialog(null, "Empresa Registrada", "Registro de Empresa", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}

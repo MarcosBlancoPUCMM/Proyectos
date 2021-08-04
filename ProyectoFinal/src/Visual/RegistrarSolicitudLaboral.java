@@ -461,13 +461,11 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				JButton btnEnviar = new JButton("Enviar");
 				btnEnviar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-							
-						SolicitudLaboral aux = new SolicitudLaboral(false, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), "SL - "+ SolicitudLaboral.codSolicitudLaboral, aspirante.getNombre(), aspirante.getTipo(), aspirante.getCarrera(), aspirante.getArea(), aspirante.getNacionalidad(), aspirante.getOficio1(), aspirante.getOficio2(), aspirante.getOficio3(), aspirante.getOficio4(), aspirante.getSexo(), aspirante.getEstadoCivil(), Integer.parseInt(txtYearsExperiencia.getText()), aspirante.getEdad(), Float.valueOf(txtSueldoEsperado.getText()));
-						aux.setId("SL -"+SolicitudLaboral.codSolicitudLaboral) ; 
-						Bolsa.getInstance().registrarSolicitud(aux);
-						aspirante.addSolicitud(aux);
-						JOptionPane.showMessageDialog(null, "Solicitud Laboral Registrada", "Solicitud Laboral", JOptionPane.INFORMATION_MESSAGE);
 						
+						SolicitudLaboral aux = new SolicitudLaboral(false, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), "SL-"+ SolicitudLaboral.codSolicitudLaboral, aspirante.getNombre(), aspirante.getTipo(), aspirante.getCarrera(), aspirante.getArea(), aspirante.getNacionalidad(), aspirante.getOficio1(), aspirante.getOficio2(), aspirante.getOficio3(), aspirante.getOficio4(), aspirante.getSexo(), aspirante.getEstadoCivil(), Integer.valueOf(txtYearsExperiencia.getText()), Integer.valueOf(txtEdad.getText()), Float.valueOf(txtSueldoEsperado.getText()));
+						aspirante.addSolicitud(aux);
+						Bolsa.getInstance().registrarSolicitud(aux);
+						JOptionPane.showMessageDialog(null, "Solicitud Laboral Registrada", "Solicitud Laboral", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
 				});
@@ -479,7 +477,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				JButton btnCancelar = new JButton("Cancelar");
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-					dispose();
+						dispose();
 					}
 				});
 				btnCancelar.setActionCommand("Cancel");
@@ -498,8 +496,8 @@ public class RegistrarSolicitudLaboral extends JDialog {
 			panelObrero.setVisible(true);
 			panelTecnico.setVisible(false);
 			panelUniversitario.setVisible(false);
-		} else if (aspirante.getTipo().equalsIgnoreCase("TÃ©cnico")) {
-			txtNivelAcademico.setText("TÃ©cnico");
+		} else if (aspirante.getTipo().equalsIgnoreCase("Técnico")) {
+			txtNivelAcademico.setText("Técnico");
 			txtArea.setText(aspirante.getArea());
 			txtYearsExperiencia.setText(String.valueOf(aspirante.getYearsExperiencia()));
 			panelTecnico.setVisible(true);
@@ -514,8 +512,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 		}
 	}
 	private void clean() {
-		txtSueldoEsperado.setText("");
-		txtTelefono.setText("");
-		
+		txtSueldoEsperado.setText(" ");
+		txtTelefono.setText(" ");
 	}
 }

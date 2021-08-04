@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +19,8 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ListarOfertaLaboral extends JDialog {
 
@@ -53,7 +56,7 @@ public class ListarOfertaLaboral extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"Nombre", "Edad mÃ­nima", "Microsoft Office", "Adobe", "Cantidad de aspirantes"};
+					String headers[] = {"Nombre", "Edad mínima", "Cantidad de aspirantes"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
@@ -69,11 +72,26 @@ public class ListarOfertaLaboral extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnContratar = new JButton("Contratar");
+				btnContratar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ListarAspirante listaraspirante = new ListarAspirante();
+						listaraspirante.setModal(true);
+						listaraspirante.setVisible(true);
+					}
+				});
 				btnContratar.setEnabled(false);
 				buttonPane.add(btnContratar);
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int option = JOptionPane.showConfirmDialog(null,  "¿Desea cancelar la oferta?");
+						if(option == JOptionPane.YES_OPTION) {
+		
+						}
+					}
+				});
 				btnCancelar.setEnabled(false);
 				btnCancelar.setActionCommand("OK");
 				buttonPane.add(btnCancelar);
@@ -81,6 +99,11 @@ public class ListarOfertaLaboral extends JDialog {
 			}
 			{
 				JButton btnSalir = new JButton("Salir");
+				btnSalir.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				btnSalir.setActionCommand("Cancel");
 				buttonPane.add(btnSalir);
 			}
@@ -94,9 +117,11 @@ public class ListarOfertaLaboral extends JDialog {
 		for(int i = 0; i < Bolsa.getInstance().getEmpresas().get(i).getOfertas().size();i++) {
 			
 				rows[0] = Bolsa.getInstance().getEmpresas().get(i).getOfertas().get(i).getNombre();
-			//	rows[1]
+				rows[1] = Bolsa.getInstance().getEmpresas().get(i).getOfertas().get(i).getEdad();
+				rows[2] = Bolsa.getInstance().getEmpresas().get(i).getOfertas().get(i).getCantAspirantes();
+				
+				model.addRow(rows);
 		}
-		
 	}
 
 }

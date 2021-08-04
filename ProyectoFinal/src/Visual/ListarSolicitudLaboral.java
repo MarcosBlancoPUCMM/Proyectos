@@ -59,7 +59,7 @@ public class ListarSolicitudLaboral extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"No.", "OcupaciÃ³n", "Dispuesto a Mudarse", "Licencia de Conducir", "Trabajo Parcial", "Idiomas"};
+					String headers[] = {"No.", "Ocupación", "Dispuesto a Mudarse", "Licencia de Conducir", "Trabajo Parcial", "Idiomas"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
@@ -72,7 +72,6 @@ public class ListarSolicitudLaboral extends JDialog {
 								btnCancelar.setEnabled(true);
 								String id = (String)model.getValueAt(index, 0);
 								selected = aspirante.buscarSolicitud(id);
-								
 							}
 						}
 					});
@@ -90,7 +89,7 @@ public class ListarSolicitudLaboral extends JDialog {
 				btnCancelar = new JButton("Cancelar Solicitud");
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						int option = JOptionPane.showConfirmDialog(null,  "Â¿Desea cancelar la solicitud?");
+						int option = JOptionPane.showConfirmDialog(null,  "¿Desea cancelar la solicitud?");
 						if(option == JOptionPane.YES_OPTION) {
 							
 						}
@@ -137,13 +136,13 @@ public class ListarSolicitudLaboral extends JDialog {
 				rows[4] = "No";
 			}
 			if(aux.getSolicitud().get(i).isFrances() && aux.getSolicitud().get(i).isIngles() && aux.getSolicitud().get(i).isEspanol()) {
-				rows[5] = "FrancÃ©s, InglÃ©s y EspaÃ±ol";
+				rows[5] = "Francés, Inglés y Español";
 			}else if(!aux.getSolicitud().get(i).isFrances() && aux.getSolicitud().get(i).isIngles() && aux.getSolicitud().get(i).isEspanol()){
-				rows[5] = "InglÃ©s y EspaÃ±ol";
+				rows[5] = "Inglés y Español";
 			}else if(!aux.getSolicitud().get(i).isFrances() && !aux.getSolicitud().get(i).isIngles() && aux.getSolicitud().get(i).isEspanol()){
-				rows[5] = "EspaÃ±ol";
+				rows[5] = "Español";
 			}else if(aux.getSolicitud().get(i).isFrances() && aux.getSolicitud().get(i).isIngles() && !aux.getSolicitud().get(i).isEspanol()){
-				rows[5] = "InglÃ©s y FrancÃ©s";
+				rows[5] = "Inglés y Francés";
 			}
 					
 			model.addRow(rows);

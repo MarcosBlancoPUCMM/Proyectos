@@ -64,7 +64,7 @@ public class ListarAspirante extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"Cï¿½dula", "Nombre", "Apellidos", "Edad", "Estado"};
+					String headers[] = {"Cédula", "Nombre", "Apellidos", "Edad", "Estado"};
 					
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
@@ -80,7 +80,6 @@ public class ListarAspirante extends JDialog {
 								btnCrearSolicitudLaboral.setEnabled(true);
 								String cedula = (String)model.getValueAt(index, 0);
 								selected = Bolsa.getInstance().findAspiranteByCedula(cedula);
-								
 							}
 						}
 					});

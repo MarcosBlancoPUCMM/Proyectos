@@ -53,7 +53,8 @@ public class RegistrarAspirante extends JDialog {
 	private JRadioButton rdbtnHombre;
 	private JLabel lblDireccion;
 	private JTextField txtDireccion;
-	ImageIcon mainImage = new ImageIcon("Imagenes/userIcon.png");
+	ImageIcon userIcon = new ImageIcon("Imagenes/userIcon.png");
+	private JLabel lblRegistrarAspirante;
 
 	/**
 	 * Launch the application.
@@ -84,12 +85,6 @@ public class RegistrarAspirante extends JDialog {
 			panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
-			{
-				JLabel lblUserIcon = new JLabel("");
-				lblUserIcon.setBounds(12, 13, 100, 100);
-				panel.add(lblUserIcon);
-				lblUserIcon.setIcon(mainImage);
-			}
 			
 			JLabel lblNombre = new JLabel("Nombre:");
 			lblNombre.setBounds(124, 13, 56, 16);
@@ -387,6 +382,11 @@ public class RegistrarAspirante extends JDialog {
 				txtDireccion.setBounds(74, 198, 336, 22);
 				panel.add(txtDireccion);
 				txtDireccion.setColumns(10);
+			}
+			{
+				lblRegistrarAspirante = new JLabel("");
+				lblRegistrarAspirante.setBounds(12, 13, 100, 100);
+				panel.add(lblRegistrarAspirante);
 			}
 		}
 		{
