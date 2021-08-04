@@ -128,11 +128,13 @@ public class Bolsa {
 		return logrado;
 	}
 	
-	public int comparadorOfertas(ArrayList<SolicitudLaboral> solicitudes, OfertaLaboral oferta) {
+	public ArrayList<SolicitudLaboral> mejoresSolicitudes(ArrayList<SolicitudLaboral> solicitudes, OfertaLaboral oferta) {
 		int aux = 0;
 		int contador;
-		int masAlto = 0;
-		int ganador = 0;
+		int masAlto=0;
+		int elementos = 0;
+		
+		ArrayList<SolicitudLaboral> mejoresSolicitudes = new ArrayList<>();
 		
 		for(int i =0; i<=solicitudes.size(); i++){
 		contador = 0;
@@ -155,7 +157,7 @@ public class Bolsa {
 				
 				//Tecnico
 				if(oferta.getTipo()=="Tecnico") {
-				if(oferta.getYearsExperiencia()<=solicitudes.get(i).getYearsExperiencia()) { contador++; contador++;}
+				if(oferta.getYearsExperiencia()<=solicitudes.get(i).getYearsExperiencia()) { contador++;}
 				if(oferta.getArea()==solicitudes.get(i).getArea()) { contador++;}
 				}
 				
@@ -169,20 +171,27 @@ public class Bolsa {
 				
 				//Universitario
 				if(oferta.getTipo()=="Universitario") {
-				if(oferta.getCarrera()==solicitudes.get(i).getCarrera()) { contador++; contador++;}
+				if(oferta.getCarrera()==solicitudes.get(i).getCarrera()) { contador++;}
 				}
 				
-				if(contador>=masAlto) {masAlto=contador;
-				ganador=i;
+				if(contador>=10) {
+					
+					if(elementos<11) {
+					elementos++;
+					mejoresSolicitudes.add(solicitudes.get(i));}
+					else {
+						if(contador>masAlto) {
+							mejoresSolicitudes.add(0, solicitudes.get(i));
+							masAlto=contador;
+						}
+					}		}
 				}
 			}
 			
-		}
+		//oferta.setCompletado(true);   Cuando el aspirante es contratado
+	//	solicitudes.get(ganador).setLibre(false);
 		
-		oferta.setCompletado(true);
-		solicitudes.get(ganador).setLibre(false);
-		
-		return ganador;
+		return mejoresSolicitudes;
 	}
 
 
