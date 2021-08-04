@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -15,6 +16,7 @@ import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
 
 import Logico.Aspirante;
 import Logico.Bolsa;
+import Logico.OfertaLaboral;
 import Logico.SolicitudLaboral;
 
 import javax.swing.JScrollPane;
@@ -39,8 +41,8 @@ public class ListarAspiranteAdecuado extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ListarAspiranteAdecuado() {
-		setTitle("Lista de Aspirantes mejores Adecuados para la Oferta");
+	public ListarAspiranteAdecuado(ArrayList<SolicitudLaboral> solicitudes) {
+		setTitle("Lista de Solicitudes mejores Adecuados para la Oferta");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

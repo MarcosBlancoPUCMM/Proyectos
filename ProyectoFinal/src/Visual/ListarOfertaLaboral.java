@@ -93,7 +93,7 @@ public class ListarOfertaLaboral extends JDialog {
 				btnContratar = new JButton("Contratar");
 				btnContratar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						ListarAspiranteAdecuado listarAspiranteAdecuado = new ListarAspiranteAdecuado();
+						ListarAspiranteAdecuado listarAspiranteAdecuado = new ListarAspiranteAdecuado(Bolsa.getInstance().mejoresSolicitudes(Bolsa.getInstance().getSolicitudes(), selected));
 						listarAspiranteAdecuado.setModal(true);
 						listarAspiranteAdecuado.setVisible(true);
 					}
