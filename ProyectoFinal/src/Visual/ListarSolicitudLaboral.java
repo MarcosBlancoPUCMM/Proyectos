@@ -121,7 +121,7 @@ public class ListarSolicitudLaboral extends JDialog {
 		
 		for(int i = 0; i< aux.getSolicitud().size();i++) {
 			rows[0] = aux.getSolicitud().get(i).getId();
-			rows[1] = aux.getSolicitud().get(i).getOcipacion();
+			rows[1] = aux.getSolicitud().get(i).getTipo();
 			if(aux.getSolicitud().get(i).isDispuestoMudarse()) {
 				rows[2] = "Si";
 			}else {

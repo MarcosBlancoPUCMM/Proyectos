@@ -10,7 +10,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import Logico.Aspirante;
+import Logico.Bolsa;
+import Logico.SolicitudLaboral;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -31,13 +35,11 @@ public class RegistrarSolicitudLaboral extends JDialog {
 	private JTextField txtCiudad;
 	private JTextField txtNacionalidad;
 	private JTextField txtNivelAcademico;
-	private JTextField txtSueldoEsperado;
 	private JTextField txtOficio1;
 	private JTextField txtOficio2;
 	private JTextField txtOficio3;
 	private JTextField txtOficio4;
 	private JTextField txtCorreo;
-	private JTextField txtTelefono;
 	private JTextField txtDireccion;
 	private JTextField txtCarrera;
 	private JTextField txtArea;
@@ -45,6 +47,16 @@ public class RegistrarSolicitudLaboral extends JDialog {
 	private JPanel panelObrero;
 	private JPanel panelTecnico;
 	private JPanel panelUniversitario;
+	private JRadioButton rdbtnEspanol;
+	private JRadioButton rdbtnIngles;
+	private JRadioButton rdbtnFrances;
+	private JRadioButton rdbtnDispuestoMudarse;
+	private JRadioButton rdbtnLicenciaConducir;
+	private JRadioButton rdbtnTrabajoParcial;
+	private JTextField txtSueldoEsperado;
+	private JRadioButton rdbtnMicrosoftOffice;
+	private JRadioButton rdbtnAdobe;
+	private JTextField txtTelefono;
 
 	/**
 	 * Launch the application
@@ -344,15 +356,15 @@ public class RegistrarSolicitudLaboral extends JDialog {
 					panelRight.add(lblIdiomas);
 				}
 				
-				JRadioButton rdbtnEspanol = new JRadioButton("Espa\u00F1ol");
+				rdbtnEspanol = new JRadioButton("Espa\u00F1ol");
 				rdbtnEspanol.setBounds(76, 53, 80, 25);
 				panelRight.add(rdbtnEspanol);
 				
-				JRadioButton rdbtnIngles = new JRadioButton("Ingl\u00E9s");
+				rdbtnIngles = new JRadioButton("Ingl\u00E9s");
 				rdbtnIngles.setBounds(160, 53, 80, 25);
 				panelRight.add(rdbtnIngles);
 				
-				JRadioButton rdbtnFrances = new JRadioButton("Franc\u00E9s");
+				rdbtnFrances = new JRadioButton("Franc\u00E9s");
 				rdbtnFrances.setBounds(244, 53, 80, 25);
 				panelRight.add(rdbtnFrances);
 				
@@ -360,15 +372,15 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				separator.setBounds(12, 86, 312, 2);
 				panelRight.add(separator);
 				
-				JRadioButton rdbtnDispuestoMudarse = new JRadioButton("Dispuesto a mudarse");
+				rdbtnDispuestoMudarse = new JRadioButton("Dispuesto a mudarse");
 				rdbtnDispuestoMudarse.setBounds(12, 97, 149, 25);
 				panelRight.add(rdbtnDispuestoMudarse);
 				
-				JRadioButton rdbtnLicenciaConducir = new JRadioButton("Licencia de Conducir");
+				rdbtnLicenciaConducir = new JRadioButton("Licencia de Conducir");
 				rdbtnLicenciaConducir.setBounds(165, 97, 159, 25);
 				panelRight.add(rdbtnLicenciaConducir);
 				{
-					JRadioButton rdbtnTrabajoParcial = new JRadioButton("Trabajo Parcial");
+					rdbtnTrabajoParcial = new JRadioButton("Trabajo Parcial");
 					rdbtnTrabajoParcial.setBounds(12, 127, 127, 25);
 					panelRight.add(rdbtnTrabajoParcial);
 				}
@@ -394,12 +406,12 @@ public class RegistrarSolicitudLaboral extends JDialog {
 					panelRight.add(separator_1);
 				}
 				{
-					JRadioButton rdbtnMicrosoftOffice = new JRadioButton("Microsoft Office");
+					rdbtnMicrosoftOffice = new JRadioButton("Microsoft Office");
 					rdbtnMicrosoftOffice.setBounds(88, 201, 118, 25);
 					panelRight.add(rdbtnMicrosoftOffice);
 				}
 				{
-					JRadioButton rdbtnAdobe = new JRadioButton("Adobe");
+					rdbtnAdobe = new JRadioButton("Adobe");
 					rdbtnAdobe.setBounds(210, 201, 114, 25);
 					panelRight.add(rdbtnAdobe);
 				}
@@ -449,7 +461,13 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				JButton btnEnviar = new JButton("Enviar");
 				btnEnviar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						RegistrarSolicitudLaboral aux = null;
+							
+						SolicitudLaboral aux = new SolicitudLaboral(false, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), "SL - "+ SolicitudLaboral.codSolicitudLaboral, aspirante.getNombre(), aspirante.getTipo(), aspirante.getCarrera(), aspirante.getArea(), aspirante.getNacionalidad(), aspirante.getOficio1(), aspirante.getOficio2(), aspirante.getOficio3(), aspirante.getOficio4(), aspirante.getSexo(), aspirante.getEstadoCivil(), Integer.parseInt(txtYearsExperiencia.getText()), aspirante.getEdad(), Float.valueOf(txtSueldoEsperado.getText()));
+						aux.setId("SL -"+SolicitudLaboral.codSolicitudLaboral) ; 
+						Bolsa.getInstance().getAspirantes()
+						JOptionPane.showMessageDialog(null, "Solicitud Laboral Registrada", "Solicitud Laboral", JOptionPane.INFORMATION_MESSAGE);
+						
+						clean();
 					}
 				});
 				btnEnviar.setActionCommand("OK");
@@ -479,8 +497,8 @@ public class RegistrarSolicitudLaboral extends JDialog {
 			panelObrero.setVisible(true);
 			panelTecnico.setVisible(false);
 			panelUniversitario.setVisible(false);
-		} else if (aspirante.getTipo().equalsIgnoreCase("Técnico")) {
-			txtNivelAcademico.setText("Técnico");
+		} else if (aspirante.getTipo().equalsIgnoreCase("TÃ©cnico")) {
+			txtNivelAcademico.setText("TÃ©cnico");
 			txtArea.setText(aspirante.getArea());
 			txtYearsExperiencia.setText(String.valueOf(aspirante.getYearsExperiencia()));
 			panelTecnico.setVisible(true);
@@ -493,5 +511,10 @@ public class RegistrarSolicitudLaboral extends JDialog {
 			panelObrero.setVisible(false);	
 			txtCarrera.setText(aspirante.getCarrera());
 		}
+	}
+	private void clean() {
+		txtSueldoEsperado.setText("");
+		txtTelefono.setText("");
+		
 	}
 }

@@ -64,7 +64,7 @@ public class ListarAspirante extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"Cédula", "Nombre", "Apellidos", "Edad", "Estado"};
+					String headers[] = {"Cï¿½dula", "Nombre", "Apellidos", "Edad", "Estado"};
 					
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
@@ -121,6 +121,11 @@ public class ListarAspirante extends JDialog {
 			}
 			{
 				JButton btnSalir = new JButton("Salir");
+				btnSalir.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+					dispose();
+					}
+				});
 				btnSalir.setActionCommand("Cancel");
 				buttonPane.add(btnSalir);
 			}
