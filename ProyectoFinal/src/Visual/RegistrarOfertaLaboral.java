@@ -12,6 +12,7 @@ import javax.swing.border.TitledBorder;
 import Logico.Bolsa;
 import Logico.Empresa;
 import Logico.OfertaLaboral;
+import Logico.SolicitudLaboral;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -406,7 +407,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 						
 						boolean completado = false;
 						
-						OfertaLaboral aux = new OfertaLaboral("N/A", txtEmpresa.getText(), carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadocivil, Integer.valueOf(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText()), completado, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
+						OfertaLaboral aux = new OfertaLaboral("OL-"+ OfertaLaboral.codOfertaLaboral, "N/A", txtEmpresa.getText(), carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadocivil, Integer.valueOf(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText()), completado, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
 						Bolsa.getInstance().registrarOferta(aux);
 						JOptionPane.showMessageDialog(null, "Oferta Laboral Registrada","Registro de Oferta Laboral", JOptionPane.INFORMATION_MESSAGE);
 						clean();

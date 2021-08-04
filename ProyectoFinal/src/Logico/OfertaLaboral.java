@@ -2,16 +2,19 @@ package Logico;
 
 public class OfertaLaboral {
 
-	private String tipo, nombre, carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadoCivil;
+	private String id, tipo, nombre, carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadoCivil;
 	private int cantAspirantes, yearsExperiencia, edad;
 	private boolean completado, espanol, ingles, frances, dispuestoMudarse, licenciaConducir, trabajoParcial, microsoftOffice, adobe;
 	private float paga;
+	public static int codOfertaLaboral = 1;
 	
-	public OfertaLaboral(String tipo, String nombre, String carrera, String area, String nacionalidad, String oficio1, String oficio2, String oficio3, String oficio4,
-			String sexo, String estadoCivil, int cantAspirantes, int yearsExperiencia, int edad, boolean completado,
-			boolean espanol, boolean ingles, boolean frances, boolean dispuestoMudarse, boolean licenciaConducir,
-			boolean trabajoParcial, boolean microsoftOffice, boolean adobe, float paga) {
+	public OfertaLaboral(String id, String tipo, String nombre, String carrera, String area, String nacionalidad,
+			String oficio1, String oficio2, String oficio3, String oficio4, String sexo, String estadoCivil,
+			int cantAspirantes, int yearsExperiencia, int edad, boolean completado, boolean espanol, boolean ingles,
+			boolean frances, boolean dispuestoMudarse, boolean licenciaConducir, boolean trabajoParcial,
+			boolean microsoftOffice, boolean adobe, float paga) {
 		super();
+		this.id = id;
 		this.tipo = tipo;
 		this.nombre = nombre;
 		this.carrera = carrera;
@@ -23,7 +26,7 @@ public class OfertaLaboral {
 		this.oficio4 = oficio4;
 		this.sexo = sexo;
 		this.estadoCivil = estadoCivil;
-		this.cantAspirantes = 0;
+		this.cantAspirantes = cantAspirantes;
 		this.yearsExperiencia = yearsExperiencia;
 		this.edad = edad;
 		this.completado = completado;
@@ -36,8 +39,21 @@ public class OfertaLaboral {
 		this.microsoftOffice = microsoftOffice;
 		this.adobe = adobe;
 		this.paga = paga;
+		OfertaLaboral.codOfertaLaboral++;
 	}
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -176,14 +192,10 @@ public class OfertaLaboral {
 	public void setPaga(float paga) {
 		this.paga = paga;
 	}
-
-	public String getTipo() {
-		return tipo;
+	public static int getCodOfertaLaboral() {
+		return codOfertaLaboral;
 	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public static void setCodOfertaLaboral(int codOfertaLaboral) {
+		OfertaLaboral.codOfertaLaboral = codOfertaLaboral;
 	}
-
-	
 }

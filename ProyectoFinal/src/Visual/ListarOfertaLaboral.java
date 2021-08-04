@@ -13,6 +13,9 @@ import javax.swing.table.DefaultTableModel;
 import Logico.Aspirante;
 import Logico.Bolsa;
 import Logico.Empresa;
+import Logico.OfertaLaboral;
+import Logico.SolicitudLaboral;
+import sun.reflect.generics.tree.Tree;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -30,8 +33,11 @@ public class ListarOfertaLaboral extends JDialog {
 	private static Object rows[];
 	private JButton btnListarSolicitudLaboral;
 	private JButton btnCrearSolicitudLaboral;
-	private Empresa selected = null;
-
+	private OfertaLaboral selected = null;
+	private Empresa aux = null;
+	private JButton btnCancelar;
+	private JButton btnContratar;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -60,6 +66,19 @@ public class ListarOfertaLaboral extends JDialog {
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							int index = -1;
+							index = table.getSelectedRow();
+							if (index != -1) {
+								btnCancelar.setEnabled(true);
+								btnContratar.setEnabled(true);
+								String id = (String)model.getValueAt(index, 0);
+								selected = empresa.buscarOferta(id);
+							}
+						}
+					});
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					table.setModel(model);
 					scrollPane.setViewportView(table);
@@ -71,24 +90,24 @@ public class ListarOfertaLaboral extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnContratar = new JButton("Contratar");
+				btnContratar = new JButton("Contratar");
 				btnContratar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						ListarAspirante listaraspirante = new ListarAspirante();
-						listaraspirante.setModal(true);
-						listaraspirante.setVisible(true);
+						ListarAspiranteAdecuado listarAspiranteAdecuado = new ListarAspiranteAdecuado();
+						listarAspiranteAdecuado.setModal(true);
+						listarAspiranteAdecuado.setVisible(true);
 					}
 				});
 				btnContratar.setEnabled(false);
 				buttonPane.add(btnContratar);
 			}
 			{
-				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar = new JButton("Cancelar");
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						int option = JOptionPane.showConfirmDialog(null,  "¿Desea cancelar la oferta?");
 						if(option == JOptionPane.YES_OPTION) {
-		
+							Bolsa.getInstance().eliminarOferta(empresa, selected.getId());
 						}
 					}
 				});

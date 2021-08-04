@@ -52,4 +52,40 @@ public class Empresa {
 	public void insertarOferta(OfertaLaboral oferta) {
 		ofertas.add(oferta);
 	}
+	
+	 public OfertaLaboral buscarOferta(String id) {
+		int i = 0;
+		boolean encontrado = false;
+		OfertaLaboral aux = null;
+		while (i < ofertas.size() && !encontrado) {
+			if (ofertas.get(i).getId().equalsIgnoreCase(id)) {
+				aux = ofertas.get(i);
+				encontrado = true;
+			}
+			i++;
+		}
+		return aux;
+	}
+
+	public int buscarIndexSolicitudEmpresa(String id) {
+		int i = 0;
+		boolean encontrado = false;
+		int aux = 0;
+		while (i < ofertas.size() && !encontrado) {
+			if (ofertas.get(i).getId().equalsIgnoreCase(id)) {
+				aux = i;
+				encontrado = true;
+			}
+			i++;
+		}
+		return aux;
+	}
+	
+	public void borrarOferta(int i) {
+		ofertas.remove(i);
+	}
+	
+	public void addOferta(OfertaLaboral ofert) {
+		ofertas.add(ofert);
+	}
 }

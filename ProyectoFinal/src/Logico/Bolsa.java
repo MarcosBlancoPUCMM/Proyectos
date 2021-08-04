@@ -127,6 +127,21 @@ public class Bolsa {
 		
 		return logrado;
 	}
+
+	public boolean eliminarOferta(Empresa empresa, String id) {
+		boolean logrado = false;
+		int aux = 0;
+		
+		for(int i=0; i<=getSolicitudes().size() ; i++) {
+			if(solicitudes.get(i).getId()==id) {
+				solicitudes.remove(i);
+				aux = empresa.buscarIndexSolicitudEmpresa(id);
+				empresa.borrarOferta(aux);
+			}
+		}
+		
+		return logrado;
+	}
 	
 	public ArrayList<SolicitudLaboral> mejoresSolicitudes(ArrayList<SolicitudLaboral> solicitudes, OfertaLaboral oferta) {
 		int aux = 0;
