@@ -12,6 +12,7 @@ import javax.swing.border.TitledBorder;
 
 import Logico.Aspirante;
 import Logico.Bolsa;
+import Logico.SolicitudLaboral;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -407,15 +408,16 @@ public class RegistrarAspirante extends JDialog {
 						}else if (rdbtnViudo.isSelected()) {
 							estadocivil = "Viudo";
 						}
+						ArrayList<SolicitudLaboral> soli = new ArrayList<SolicitudLaboral>(10);
 						
 						if (rdbtnObrero.isSelected()) {
-							Aspirante aux = new Aspirante(null, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtDireccion.getText(), txtNacionalidad.getText(),  txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, "Obrero", txtOficio1.getText(), txtOficio2.getText(), txtOficio3.getText(), txtOficio4.getText(), "N/A", "N/A", false, Integer.valueOf(txtEdad.getText()), 0);
+							Aspirante aux = new Aspirante(soli, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtDireccion.getText(), txtNacionalidad.getText(),  txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, "Obrero", txtOficio1.getText(), txtOficio2.getText(), txtOficio3.getText(), txtOficio4.getText(), "N/A", "N/A", false, Integer.valueOf(txtEdad.getText()), 0);
 							Bolsa.getInstance().registrarAspirante(aux);
 						} else if (rdbtnTecnico.isSelected()) {
-							Aspirante aux = new Aspirante(null, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtDireccion.getText(), txtNacionalidad.getText(),  txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, "Técnico", "N/A", "N/A", "N/A", "N/A", txtArea.getText(), "N/A", false, Integer.valueOf(txtEdad.getText()), Integer.valueOf(txtYearsExperiencia.getText()));
+							Aspirante aux = new Aspirante(soli, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtDireccion.getText(), txtNacionalidad.getText(),  txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, "Tï¿½cnico", "N/A", "N/A", "N/A", "N/A", txtArea.getText(), "N/A", false, Integer.valueOf(txtEdad.getText()), Integer.valueOf(txtYearsExperiencia.getText()));
 							Bolsa.getInstance().registrarAspirante(aux);
 						} else if (rdbtnUniversitario.isSelected()) {
-							Aspirante aux = new Aspirante(null, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtDireccion.getText(), txtNacionalidad.getText(),  txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, "Universitario", "N/A", "N/A", "N/A", "N/A", "N/A", txtCarrera.getText(), false, Integer.valueOf(txtEdad.getText()), 0);
+							Aspirante aux = new Aspirante(soli, txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText(), txtCedula.getText(), "N/A", txtDireccion.getText(), txtNacionalidad.getText(),  txtPais.getText(), txtCorreo.getText(), sexo, estadocivil, "Universitario", "N/A", "N/A", "N/A", "N/A", "N/A", txtCarrera.getText(), false, Integer.valueOf(txtEdad.getText()), 0);
 							Bolsa.getInstance().registrarAspirante(aux);
 						}
 						

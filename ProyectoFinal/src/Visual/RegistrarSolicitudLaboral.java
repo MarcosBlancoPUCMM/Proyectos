@@ -307,6 +307,7 @@ public class RegistrarSolicitudLaboral extends JDialog {
 					}
 					{
 						txtYearsExperiencia = new JTextField();
+						txtYearsExperiencia.setText("0");
 						txtYearsExperiencia.setEditable(false);
 						txtYearsExperiencia.setColumns(10);
 						txtYearsExperiencia.setBounds(153, 39, 40, 22);
@@ -462,10 +463,13 @@ public class RegistrarSolicitudLaboral extends JDialog {
 				btnEnviar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						
-						SolicitudLaboral aux = new SolicitudLaboral(false, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), "SL-"+ SolicitudLaboral.codSolicitudLaboral, aspirante.getNombre(), aspirante.getTipo(), aspirante.getCarrera(), aspirante.getArea(), aspirante.getNacionalidad(), aspirante.getOficio1(), aspirante.getOficio2(), aspirante.getOficio3(), aspirante.getOficio4(), aspirante.getSexo(), aspirante.getEstadoCivil(), Integer.valueOf(txtYearsExperiencia.getText()), Integer.valueOf(txtEdad.getText()), Float.valueOf(txtSueldoEsperado.getText()));
-						aspirante.addSolicitud(aux);
+						
+						SolicitudLaboral aux = new SolicitudLaboral(false, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), "SL-"+ SolicitudLaboral.codSolicitudLaboral, aspirante.getNombre(), aspirante.getTipo(), aspirante.getCarrera(), aspirante.getArea(), aspirante.getNacionalidad(), aspirante.getOficio1(), aspirante.getOficio2(), aspirante.getOficio3(), aspirante.getOficio4(), aspirante.getSexo(), aspirante.getEstadoCivil(), Integer.valueOf(txtYearsExperiencia.getText().trim()), Integer.valueOf(txtEdad.getText().trim()), Float.valueOf(txtSueldoEsperado.getText().trim()));
+					//	Aspirante aux2 = new Aspirante(aux, aspirante.getNombre(), aspirante.getApellidos(), aspirante.getCiudad(), aspirante.getCedula(), aspirante.getTelefono(), aspirante.getDireccion(), aspirante.getNacionalidad(), aspirante.getPais(), aspirante.getCorreo(), aspirante.getSexo(), aspirante.getEstadoCivil(), aspirante.getTipo(), aspirante.getOficio1(), aspirante.getOficio2(), aspirante.getOficio3(), aspirante.getOficio4(), aspirante.getArea(), aspirante.getCarrera(), aspirante.isEstado(), Integer.valueOf(aspirante.getEdad()), Integer.valueOf(aspirante.getYearsExperiencia()));
+				    	aspirante.addSolicitud(aux);
 						Bolsa.getInstance().registrarSolicitud(aux);
 						JOptionPane.showMessageDialog(null, "Solicitud Laboral Registrada", "Solicitud Laboral", JOptionPane.INFORMATION_MESSAGE);
+						
 						clean();
 					}
 				});
@@ -496,8 +500,8 @@ public class RegistrarSolicitudLaboral extends JDialog {
 			panelObrero.setVisible(true);
 			panelTecnico.setVisible(false);
 			panelUniversitario.setVisible(false);
-		} else if (aspirante.getTipo().equalsIgnoreCase("Técnico")) {
-			txtNivelAcademico.setText("Técnico");
+		} else if (aspirante.getTipo().equalsIgnoreCase("Tï¿½cnico")) {
+			txtNivelAcademico.setText("Tï¿½cnico");
 			txtArea.setText(aspirante.getArea());
 			txtYearsExperiencia.setText(String.valueOf(aspirante.getYearsExperiencia()));
 			panelTecnico.setVisible(true);
