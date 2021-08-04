@@ -207,4 +207,7 @@ public class Aspirante {
 		}
 		return aux;
 	}
+	public void addSolicitud(SolicitudLaboral solicit) {
+		solicitud.add(solicit);
+	}
 }

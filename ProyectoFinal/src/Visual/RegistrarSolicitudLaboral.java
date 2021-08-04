@@ -464,7 +464,8 @@ public class RegistrarSolicitudLaboral extends JDialog {
 							
 						SolicitudLaboral aux = new SolicitudLaboral(false, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), "SL - "+ SolicitudLaboral.codSolicitudLaboral, aspirante.getNombre(), aspirante.getTipo(), aspirante.getCarrera(), aspirante.getArea(), aspirante.getNacionalidad(), aspirante.getOficio1(), aspirante.getOficio2(), aspirante.getOficio3(), aspirante.getOficio4(), aspirante.getSexo(), aspirante.getEstadoCivil(), Integer.parseInt(txtYearsExperiencia.getText()), aspirante.getEdad(), Float.valueOf(txtSueldoEsperado.getText()));
 						aux.setId("SL -"+SolicitudLaboral.codSolicitudLaboral) ; 
-						Bolsa.getInstance().getAspirantes()
+						Bolsa.getInstance().registrarSolicitud(aux);
+						aspirante.addSolicitud(aux);
 						JOptionPane.showMessageDialog(null, "Solicitud Laboral Registrada", "Solicitud Laboral", JOptionPane.INFORMATION_MESSAGE);
 						
 						clean();
