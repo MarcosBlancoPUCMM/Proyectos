@@ -179,6 +179,9 @@ public class Bolsa {
 			
 		}
 		
+		oferta.setCompletado(true);
+		solicitudes.get(ganador).setLibre(false);
+		
 		return ganador;
 	}
 
