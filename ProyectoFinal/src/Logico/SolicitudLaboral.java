@@ -3,14 +3,27 @@ package Logico;
 public class SolicitudLaboral {
 
 	private boolean libre, espanol, ingles, frances, dispuestoMudarse, licenciaConducir, trabajoParcial, microsoftOffice, adobe;
+<<<<<<< HEAD
 	private String nombre, tipo, carrera, area, nacionalidad, ocupacion, sexo, estadoCivil;
+=======
+	private String id, nombre, tipo, carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadoCivil;
+>>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
 	private int yearsExperiencia, edad;
 	private float paga;
+	public static int codSolicitudLaboral = 1;
 	
+<<<<<<< HEAD
 	public SolicitudLaboral(boolean espanol, boolean ingles, boolean frances, boolean dispuestoMudarse,
 			boolean licenciaConducir, boolean trabajoParcial, boolean microsoftOffice, boolean adobe, String nombre,
 			String tipo, String carrera, String area, String nacionalidad, String ocipacion, String sexo,
 			String estadoCivil, int yearsExperiencia, int edad, float paga) {
+=======
+	public SolicitudLaboral(boolean libre, boolean espanol, boolean ingles, boolean frances, boolean dispuestoMudarse,
+			boolean licenciaConducir, boolean trabajoParcial, boolean microsoftOffice, boolean adobe, String id,
+			String nombre, String tipo, String carrera, String area, String nacionalidad, String oficio1,
+			String oficio2, String oficio3, String oficio4, String sexo, String estadoCivil, int yearsExperiencia,
+			int edad, float paga) {
+>>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
 		super();
 		this.libre = true;
 		this.espanol = espanol;
@@ -21,17 +34,26 @@ public class SolicitudLaboral {
 		this.trabajoParcial = trabajoParcial;
 		this.microsoftOffice = microsoftOffice;
 		this.adobe = adobe;
+		this.id = id;
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.carrera = carrera;
 		this.area = area;
 		this.nacionalidad = nacionalidad;
+<<<<<<< HEAD
 		this.ocupacion = ocipacion;
+=======
+		this.oficio1 = oficio1;
+		this.oficio2 = oficio2;
+		this.oficio3 = oficio3;
+		this.oficio4 = oficio4;
+>>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
 		this.sexo = sexo;
 		this.estadoCivil = estadoCivil;
 		this.yearsExperiencia = yearsExperiencia;
 		this.edad = edad;
 		this.paga = paga;
+		SolicitudLaboral.codSolicitudLaboral++;
 	}
 	
 	public boolean isLibre() {
@@ -88,6 +110,12 @@ public class SolicitudLaboral {
 	public void setAdobe(boolean adobe) {
 		this.adobe = adobe;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -118,11 +146,39 @@ public class SolicitudLaboral {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
+<<<<<<< HEAD
 	public String getOcupacion() {
 		return ocupacion;
+=======
+	public String getOficio1() {
+		return oficio1;
+>>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
 	}
+<<<<<<< HEAD
 	public void setOcupacion(String ocipacion) {
 		this.ocupacion = ocipacion;
+=======
+	public void setOficio1(String oficio1) {
+		this.oficio1 = oficio1;
+	}
+	public String getOficio2() {
+		return oficio2;
+	}
+	public void setOficio2(String oficio2) {
+		this.oficio2 = oficio2;
+	}
+	public String getOficio3() {
+		return oficio3;
+	}
+	public void setOficio3(String oficio3) {
+		this.oficio3 = oficio3;
+	}
+	public String getOficio4() {
+		return oficio4;
+	}
+	public void setOficio4(String oficio4) {
+		this.oficio4 = oficio4;
+>>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
 	}
 	public String getSexo() {
 		return sexo;

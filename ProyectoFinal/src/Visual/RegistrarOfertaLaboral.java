@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import Logico.Bolsa;
+import Logico.Empresa;
 import Logico.OfertaLaboral;
 
 import javax.swing.JLabel;
@@ -53,26 +54,20 @@ public class RegistrarOfertaLaboral extends JDialog {
 	private JRadioButton rdbtnTecnico;
 	private JRadioButton rdbtnMasculino;
 	private JRadioButton rdbtnObrero;
+	private JRadioButton rdbtnUniversitario;
 
 	/**
 	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			RegistrarOfertaLaboral dialog = new RegistrarOfertaLaboral();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+
 
 	/**
 	 * Create the dialog.
+	 * @param selected 
 	 */
-	public RegistrarOfertaLaboral() {
+	public RegistrarOfertaLaboral(Empresa empresa) {
 		setTitle("Oferta Laboral");
 		setBounds(100, 100, 866, 488);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -115,6 +110,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 
 			txtEmpresa = new JTextField();
 			txtEmpresa.setEditable(false);
+			txtEmpresa.setText(empresa.getNombre());
 			txtEmpresa.setBounds(80, 10, 330, 22);
 			panelLeft.add(txtEmpresa);
 			txtEmpresa.setColumns(10);
@@ -135,7 +131,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 			rdbtnTecnico.setBounds(12, 190, 72, 25);
 			panelLeft.add(rdbtnTecnico);
 
-			JRadioButton rdbtnUniversitario = new JRadioButton("Universitario");
+			rdbtnUniversitario = new JRadioButton("Universitario");
 			rdbtnUniversitario.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if(rdbtnUniversitario.isSelected()) {
@@ -209,8 +205,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 			txtYearsExperiencia.setColumns(10);
 
 			JPanel panelUniversitario = new JPanel();
-			panelUniversitario
-					.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panelUniversitario.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panelUniversitario.setBounds(12, 347, 398, 42);
 			panelLeft.add(panelUniversitario);
 			panelUniversitario.setLayout(null);
@@ -245,8 +240,8 @@ public class RegistrarOfertaLaboral extends JDialog {
 		panelRight.add(lblTexto);
 		lblTexto.setFont(new Font("Tahoma", Font.BOLD, 13));
 
-		JLabel lblEdad = new JLabel("Edad mínima requerida:");
-		lblEdad.setBounds(12, 100, 100, 16);
+		JLabel lblEdad = new JLabel("Edad minima requerida:");
+		lblEdad.setBounds(12, 100, 138, 16);
 		panelRight.add(lblEdad);
 
 		JLabel lblSexo = new JLabel("Sexo:");
@@ -262,7 +257,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 		panelRight.add(rdbtnFemenino);
 
 		txtEdad = new JTextField();
-		txtEdad.setBounds(120, 97, 40, 22);
+		txtEdad.setBounds(162, 97, 40, 22);
 		panelRight.add(txtEdad);
 		txtEdad.setColumns(10);
 
@@ -359,14 +354,21 @@ public class RegistrarOfertaLaboral extends JDialog {
 						
 						String sexo = "N/A";
 						String estadocivil = "N/A";
-						String ocupacion = "N/A";
-						String tipo = "N/A";
+						String oficio1 = "N/A";
+						String oficio2 = "N/A";
+						String oficio3 = "N/A";
+						String oficio4 = "N/A";
 						String nacionalidad = "N/A";
+						String carrera = "N/A";
+						String area = "N/A";
+						
 						int experiencia = 0;
 						
 						if(rdbtnTecnico.isSelected()) {
 							experiencia = Integer.valueOf(txtYearsExperiencia.getText());
+							area = txtArea.getText();
 						}
+						
 						if(rdbtnMasculino.isSelected() && !rdbtnFemenino.isSelected()) {
 							sexo = "Masculino";
 						}else if(rdbtnFemenino.isSelected() && !rdbtnMasculino.isSelected()) {
@@ -374,6 +376,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 						}else if(rdbtnFemenino.isSelected() && rdbtnMasculino.isSelected()) {
 							sexo = "N/A";
 						}
+						
 						if(rdbtnCasado.isSelected() && !rdbtnSoltero.isSelected() && !rdbtnViudo.isSelected()) {
 							estadocivil = "Casado"; 
 						}else if(!rdbtnCasado.isSelected() && rdbtnSoltero.isSelected() && !rdbtnViudo.isSelected()) {
@@ -389,15 +392,26 @@ public class RegistrarOfertaLaboral extends JDialog {
 						}else if(rdbtnCasado.isSelected() && rdbtnSoltero.isSelected() && rdbtnViudo.isSelected()) {
 							estadocivil = "N/A"; 
 						}
+						
 						if(rdbtnObrero.isSelected()) {
-							ocupacion = txtOficio1.getText() + txtOficio2.getText() + txtOficio3.getText() + txtOficio4.getText();
+							 oficio1 = txtOficio1.getText();
+							 oficio2 = txtOficio2.getText();
+							 oficio3 = txtOficio3.getText();
+							 oficio4 = txtOficio4.getText();
 						}
-						boolean contratado = false;
+						
+						if (rdbtnUniversitario.isSelected()) {
+							 carrera = txtCarrera.getText();
+						}
+						
+						boolean completado = false;
+						
+						OfertaLaboral aux = new OfertaLaboral("N/A", carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadocivil, Integer.valueOf(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText()), completado, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
 
-						OfertaLaboral aux = new OfertaLaboral(txtTrabajo.getText(), tipo, txtCarrera.getText(), txtArea.getText(), nacionalidad, ocupacion, sexo, estadocivil,  Integer.valueOf(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText()), contratado, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
 						Bolsa.getInstance().registrarOferta(aux);
 						JOptionPane.showMessageDialog(null, "Oferta Laboral Registrada","Registro de Oferta Laboral", JOptionPane.INFORMATION_MESSAGE);
 						clean();
+						
 					}							
 				});
 				btnCrear.setActionCommand("OK");

@@ -89,7 +89,7 @@ public class Bolsa {
 		return logrado;
 	}
 
-	private Empresa buscarEmpresa(String RNC) {
+	public Empresa buscarEmpresa(String RNC) {
 		int i = 0;
 		boolean encontrado = false;
 		Empresa aux = null;
@@ -113,6 +113,7 @@ public class Bolsa {
 		return logrado;
 	}
 	
+<<<<<<< HEAD
 	public int comparadorOfertas(ArrayList<SolicitudLaboral> solicitudes, OfertaLaboral oferta) {
 		int aux = 0;
 		int contador;
@@ -164,6 +165,17 @@ public class Bolsa {
 		return ganador;
 	}
 	
+=======
+	public Aspirante findAspiranteByCedula(String cedula) {
+		for (Aspirante aspirante : aspirantes) {
+			if (aspirante.getCedula().equalsIgnoreCase(cedula)) {
+				return aspirante;
+			}
+		}
+		return null;
+	}
+
+>>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
 	public void generarReporte() {
 		
 	}

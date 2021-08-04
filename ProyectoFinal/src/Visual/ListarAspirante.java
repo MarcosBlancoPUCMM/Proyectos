@@ -7,14 +7,30 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import Logico.Aspirante;
+import Logico.Bolsa;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ListarAspirante extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
+	private static DefaultTableModel model;
+	private static Object rows[];
+	private JButton btnListarSolicitudLaboral;
+	private JButton btnCrearSolicitudLaboral;
+	private Aspirante selected = null;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -35,6 +51,7 @@ public class ListarAspirante extends JDialog {
 	public ListarAspirante() {
 		setTitle("Lista de Aspirantes");
 		setBounds(100, 100, 450, 300);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -47,8 +64,27 @@ public class ListarAspirante extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
+					String headers[] = {"C�dula", "Nombre", "Apellidos", "Edad", "Estado"};
+					
+					model = new DefaultTableModel();
+					model.setColumnIdentifiers(headers);
 					table = new JTable();
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							int index = -1;
+							index = table.getSelectedRow();
+							if(index!=-1) {
+								btnListarSolicitudLaboral.setEnabled(true);
+								btnCrearSolicitudLaboral.setEnabled(true);
+								String cedula = (String)model.getValueAt(index, 0);
+								selected = Bolsa.getInstance().findAspiranteByCedula(cedula);
+								
+							}
+						}
+					});
+					table.setModel(model);
 					scrollPane.setViewportView(table);
 				}
 			}
@@ -58,23 +94,62 @@ public class ListarAspirante extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnListarSolicitudLaboral = new JButton("Listar Solicitud Laboral");
+				btnListarSolicitudLaboral = new JButton("Listar Solicitud Laboral");
+				btnListarSolicitudLaboral.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ListarSolicitudLaboral listarsolicitudlaboral = new ListarSolicitudLaboral(selected);
+						listarsolicitudlaboral.setModal(true);
+						listarsolicitudlaboral.setVisible(true);
+					}
+				});
 				btnListarSolicitudLaboral.setEnabled(false);
 				buttonPane.add(btnListarSolicitudLaboral);
 			}
 			{
-				JButton btnSolicitudLaboral = new JButton("Crear Solicitud Laboral");
-				btnSolicitudLaboral.setEnabled(false);
-				btnSolicitudLaboral.setActionCommand("OK");
-				buttonPane.add(btnSolicitudLaboral);
-				getRootPane().setDefaultButton(btnSolicitudLaboral);
+				btnCrearSolicitudLaboral = new JButton("Crear Solicitud Laboral");
+				btnCrearSolicitudLaboral.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						RegistrarSolicitudLaboral registrarsolicitudlaboral = new RegistrarSolicitudLaboral(selected);
+						registrarsolicitudlaboral.setModal(true);
+						registrarsolicitudlaboral.setVisible(true);
+					}
+				});
+				btnCrearSolicitudLaboral.setEnabled(false);
+				btnCrearSolicitudLaboral.setActionCommand("OK");
+				buttonPane.add(btnCrearSolicitudLaboral);
+				getRootPane().setDefaultButton(btnCrearSolicitudLaboral);
 			}
 			{
 				JButton btnSalir = new JButton("Salir");
+				btnSalir.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+					dispose();
+					}
+				});
 				btnSalir.setActionCommand("Cancel");
 				buttonPane.add(btnSalir);
 			}
 		}
+		loadtable();
 	}
 
+	private void loadtable() {
+		rows = new Object[model.getColumnCount()];
+		model.setRowCount(0);
+		for(int i = 0; i< Bolsa.getInstance().getAspirantes().size();i++) {
+			rows[0] = Bolsa.getInstance().getAspirantes().get(i).getCedula();
+			rows[1] = Bolsa.getInstance().getAspirantes().get(i).getNombre();
+			rows[2] = Bolsa.getInstance().getAspirantes().get(i).getApellidos();
+			rows[3] = Bolsa.getInstance().getAspirantes().get(i).getEdad();
+			if (Bolsa.getInstance().getAspirantes().get(i).isEstado() == false) {
+				rows[4] = "Desempleado";
+			} else {
+				rows[4] = "Contratado";
+			}
+					
+			model.addRow(rows);
+		}
+		
+	}
+	
 }

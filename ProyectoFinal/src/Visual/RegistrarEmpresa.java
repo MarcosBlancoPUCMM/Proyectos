@@ -46,6 +46,7 @@ public class RegistrarEmpresa extends JDialog {
 	public RegistrarEmpresa() {
 		setTitle("Registrar Empresa");
 		setBounds(100, 100, 450, 191);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -126,10 +127,10 @@ public class RegistrarEmpresa extends JDialog {
 	}
 		
 		private void clean() {
-			txtNombre.setText(" ");
-			txttelefono.setText(" ");
-			txtDireccion.setText(" ");
-			txtRNC.setText(" ");
+			txtNombre.setText("");
+			txttelefono.setText("");
+			txtDireccion.setText("");
+			txtRNC.setText("");
 			
 		
 	}
