@@ -113,7 +113,21 @@ public class Bolsa {
 		return logrado;
 	}
 	
-<<<<<<< HEAD
+	public boolean eliminarSolicitud(Aspirante aspirante, String id) {
+		boolean logrado = false;
+		int aux = 0;
+		
+		for(int i=0; i<=getSolicitudes().size() ; i++) {
+			if(solicitudes.get(i).getId()==id) {
+				solicitudes.remove(i);
+				aux = aspirante.buscarIndexSolicitud(id);
+				aspirante.borrarSolicitud(aux);
+			}
+		}
+		
+		return logrado;
+	}
+	
 	public int comparadorOfertas(ArrayList<SolicitudLaboral> solicitudes, OfertaLaboral oferta) {
 		int aux = 0;
 		int contador;
@@ -122,7 +136,7 @@ public class Bolsa {
 		
 		for(int i =0; i<=solicitudes.size(); i++){
 		contador = 0;
-			if(oferta.getOcupacion()==solicitudes.get(i).getOcupacion() && solicitudes.get(i).isLibre()) {
+			if(oferta.getTipo()==solicitudes.get(i).getTipo() && solicitudes.get(i).isLibre()) {
 				aux++;
 				oferta.setCantAspirantes(aux);
 				if(oferta.getEdad()==solicitudes.get(i).getEdad()) { contador++;}
@@ -140,18 +154,21 @@ public class Bolsa {
 				if(oferta.isTrabajoParcial()==solicitudes.get(i).isTrabajoParcial()) { contador++;}
 				
 				//Tecnico
-				if(oferta.getOcupacion()=="Tecnico") {
+				if(oferta.getTipo()=="Tecnico") {
 				if(oferta.getYearsExperiencia()<=solicitudes.get(i).getYearsExperiencia()) { contador++; contador++;}
 				if(oferta.getArea()==solicitudes.get(i).getArea()) { contador++;}
 				}
 				
 				//Obrero
-				if(oferta.getOcupacion()=="Obrero") {
-			//	if(oferta.()==solicitudes.get(i).getArea()) { contador++;}
+				if(oferta.getTipo()=="Obrero") {
+				if(oferta.getOficio1()==solicitudes.get(i).getOficio1()) { contador++;}
+				if(oferta.getOficio2()==solicitudes.get(i).getOficio2()) { contador++;}
+				if(oferta.getOficio3()==solicitudes.get(i).getOficio3()) { contador++;}
+				if(oferta.getOficio4()==solicitudes.get(i).getOficio4()) { contador++;}
 				}
 				
 				//Universitario
-				if(oferta.getOcupacion()=="Universitario") {
+				if(oferta.getTipo()=="Universitario") {
 				if(oferta.getCarrera()==solicitudes.get(i).getCarrera()) { contador++; contador++;}
 				}
 				
@@ -164,8 +181,8 @@ public class Bolsa {
 		
 		return ganador;
 	}
-	
-=======
+
+
 	public Aspirante findAspiranteByCedula(String cedula) {
 		for (Aspirante aspirante : aspirantes) {
 			if (aspirante.getCedula().equalsIgnoreCase(cedula)) {
@@ -175,7 +192,6 @@ public class Bolsa {
 		return null;
 	}
 
->>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
 	public void generarReporte() {
 		
 	}

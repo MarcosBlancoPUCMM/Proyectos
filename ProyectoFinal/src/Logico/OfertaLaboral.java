@@ -2,32 +2,25 @@ package Logico;
 
 public class OfertaLaboral {
 
-<<<<<<< HEAD
-	private String nombre, tipo, carrera, area, nacionalidad, ocupacion, sexo, estadoCivil;
-=======
-	private String nombre, carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadoCivil;
->>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
+	private String tipo, nombre, carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadoCivil;
 	private int cantAspirantes, yearsExperiencia, edad;
 	private boolean completado, espanol, ingles, frances, dispuestoMudarse, licenciaConducir, trabajoParcial, microsoftOffice, adobe;
 	private float paga;
 	
-	public OfertaLaboral(String nombre, String carrera, String area, String nacionalidad, String oficio1, String oficio2, String oficio3, String oficio4,
+	public OfertaLaboral(String tipo, String nombre, String carrera, String area, String nacionalidad, String oficio1, String oficio2, String oficio3, String oficio4,
 			String sexo, String estadoCivil, int cantAspirantes, int yearsExperiencia, int edad, boolean completado,
 			boolean espanol, boolean ingles, boolean frances, boolean dispuestoMudarse, boolean licenciaConducir,
 			boolean trabajoParcial, boolean microsoftOffice, boolean adobe, float paga) {
 		super();
+		this.tipo = tipo;
 		this.nombre = nombre;
 		this.carrera = carrera;
 		this.area = area;
 		this.nacionalidad = nacionalidad;
-<<<<<<< HEAD
-		this.ocupacion = ocipacion;
-=======
 		this.oficio1 = oficio1;
 		this.oficio2 = oficio2;
 		this.oficio3 = oficio3;
 		this.oficio4 = oficio4;
->>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
 		this.sexo = sexo;
 		this.estadoCivil = estadoCivil;
 		this.cantAspirantes = 0;
@@ -69,18 +62,9 @@ public class OfertaLaboral {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-<<<<<<< HEAD
-	public String getOcupacion() {
-		return ocupacion;
-=======
 	public String getOficio1() {
 		return oficio1;
->>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
 	}
-<<<<<<< HEAD
-	public void setOcupacion(String ocipacion) {
-		this.ocupacion = ocipacion;
-=======
 	public void setOficio1(String oficio1) {
 		this.oficio1 = oficio1;
 	}
@@ -101,7 +85,6 @@ public class OfertaLaboral {
 	}
 	public void setOficio4(String oficio4) {
 		this.oficio4 = oficio4;
->>>>>>> branch 'master' of https://github.com/MarcosBlancoPUCMM/Proyectos.git
 	}
 	public String getSexo() {
 		return sexo;
@@ -193,4 +176,14 @@ public class OfertaLaboral {
 	public void setPaga(float paga) {
 		this.paga = paga;
 	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	
 }

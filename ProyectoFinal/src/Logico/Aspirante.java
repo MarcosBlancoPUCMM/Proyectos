@@ -194,19 +194,24 @@ public class Aspirante {
 		return aux;
 	}
 	
-	public String buscarIndexSolicitud(String id) {
+	public int buscarIndexSolicitud(String id) {
 		int i = 0;
 		boolean encontrado = false;
-		String aux = null;
+		int aux = 0;
 		while (i < solicitud.size() && !encontrado) {
 			if (solicitud.get(i).getId().equalsIgnoreCase(id)) {
-				aux = solicitud.get(i).getId();
+				aux = i;
 				encontrado = true;
 			}
 			i++;
 		}
 		return aux;
 	}
+	
+	public void borrarSolicitud(int i) {
+		solicitud.remove(i);
+	}
+	
 	public void addSolicitud(SolicitudLaboral solicit) {
 		solicitud.add(solicit);
 	}
