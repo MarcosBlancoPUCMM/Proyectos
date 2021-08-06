@@ -145,7 +145,6 @@ public class Bolsa {
 	}
 	
 	public ArrayList<SolicitudLaboral> mejoresSolicitudes(ArrayList<SolicitudLaboral> solicitudes, OfertaLaboral oferta) {
-		/*
 		int aux = 0;
 		int contador;
 		int masAlto=0;
@@ -155,14 +154,16 @@ public class Bolsa {
 		
 		for(int i =0; i<=solicitudes.size(); i++){
 		contador = 0;
-			if(oferta.getTipo()==solicitudes.get(i).getTipo() && solicitudes.get(i).isLibre()) {
+			if(solicitudes.get(i).isLibre()) {
 				aux++;
 				oferta.setCantAspirantes(aux);
 				if(oferta.getEdad()==solicitudes.get(i).getEdad()) { contador++;}
-				if(oferta.getEstadoCivil()==solicitudes.get(i).getEstadoCivil()) { contador++;}
+				if(oferta.isSoltero()&&solicitudes.get(i).getEstadoCivil()=="Soltero") { contador++;}
+				if(oferta.isCasado()&&solicitudes.get(i).getEstadoCivil()=="Casado") { contador++;}
 				if(oferta.getNacionalidad()==solicitudes.get(i).getNacionalidad()) { contador++;}
 				if(oferta.getPaga()>=(solicitudes.get(i).getPaga()-1000) && oferta.getPaga()>=(solicitudes.get(i).getPaga()+1000)) { contador++;}
-				if(oferta.getSexo()==solicitudes.get(i).getSexo()) { contador++;}
+				if(oferta.isMasculino()&&solicitudes.get(i).getSexo()=="Masculino") { contador++;}
+				if(oferta.isFemenino()&&solicitudes.get(i).getSexo()=="Femenino") { contador++;}
 				if(oferta.isAdobe()==solicitudes.get(i).isAdobe()) { contador++;}
 				if(oferta.isDispuestoMudarse()==solicitudes.get(i).isDispuestoMudarse()) { contador++;}
 				if(oferta.isEspanol()==solicitudes.get(i).isEspanol()) { contador++;}
@@ -173,21 +174,36 @@ public class Bolsa {
 				if(oferta.isTrabajoParcial()==solicitudes.get(i).isTrabajoParcial()) { contador++;}
 				
 				//Tecnico
-				if(oferta.getTipo()=="Tecnico") {
+				if(oferta.isTecnico()) {
 				if(oferta.getYearsExperiencia()<=solicitudes.get(i).getYearsExperiencia()) { contador++;}
 				if(oferta.getArea()==solicitudes.get(i).getArea()) { contador++;}
 				}
 				
 				//Obrero
-				if(oferta.getTipo()=="Obrero") {
+				if(oferta.isObrero()) {
 				if(oferta.getOficio1()==solicitudes.get(i).getOficio1()) { contador++;}
+				if(oferta.getOficio1()==solicitudes.get(i).getOficio2()) { contador++;}
+				if(oferta.getOficio1()==solicitudes.get(i).getOficio3()) { contador++;}
+				if(oferta.getOficio1()==solicitudes.get(i).getOficio4()) { contador++;}
+				
+				if(oferta.getOficio2()==solicitudes.get(i).getOficio1()) { contador++;}
 				if(oferta.getOficio2()==solicitudes.get(i).getOficio2()) { contador++;}
+				if(oferta.getOficio2()==solicitudes.get(i).getOficio3()) { contador++;}
+				if(oferta.getOficio2()==solicitudes.get(i).getOficio4()) { contador++;}
+				
+				if(oferta.getOficio3()==solicitudes.get(i).getOficio1()) { contador++;}
+				if(oferta.getOficio3()==solicitudes.get(i).getOficio2()) { contador++;}
 				if(oferta.getOficio3()==solicitudes.get(i).getOficio3()) { contador++;}
+				if(oferta.getOficio3()==solicitudes.get(i).getOficio3()) { contador++;}
+				
+				if(oferta.getOficio4()==solicitudes.get(i).getOficio1()) { contador++;}
+				if(oferta.getOficio4()==solicitudes.get(i).getOficio2()) { contador++;}
+				if(oferta.getOficio4()==solicitudes.get(i).getOficio3()) { contador++;}
 				if(oferta.getOficio4()==solicitudes.get(i).getOficio4()) { contador++;}
 				}
 				
 				//Universitario
-				if(oferta.getTipo()=="Universitario") {
+				if(oferta.isUniversitario()) {
 				if(oferta.getCarrera()==solicitudes.get(i).getCarrera()) { contador++;}
 				}
 				
@@ -209,8 +225,6 @@ public class Bolsa {
 	//	solicitudes.get(ganador).setLibre(false);
 		
 		return mejoresSolicitudes;
-		*/
-		return null;
 	}
 
 
@@ -223,7 +237,4 @@ public class Bolsa {
 		return null;
 	}
 
-	public void generarReporte() {
-		
-	}
 }

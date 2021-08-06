@@ -227,4 +227,6 @@ public class OfertaLaboral {
 	public void setPaga(float paga) {
 		this.paga = paga;
 	}
+
+	
 }
