@@ -160,6 +160,7 @@ public class Bolsa {
 				if(oferta.getEdad()==solicitudes.get(i).getEdad()) { contador++;}
 				if(oferta.isSoltero()&&solicitudes.get(i).getEstadoCivil()=="Soltero") { contador++;}
 				if(oferta.isCasado()&&solicitudes.get(i).getEstadoCivil()=="Casado") { contador++;}
+				if(oferta.isViudo()&&solicitudes.get(i).getEstadoCivil()=="Viudo") { contador++;}
 				if(oferta.getNacionalidad()==solicitudes.get(i).getNacionalidad()) { contador++;}
 				if(oferta.getPaga()>=(solicitudes.get(i).getPaga()-1000) && oferta.getPaga()>=(solicitudes.get(i).getPaga()+1000)) { contador++;}
 				if(oferta.isMasculino()&&solicitudes.get(i).getSexo()=="Masculino") { contador++;}
