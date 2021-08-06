@@ -400,7 +400,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 						}
 						
 						if(rdbtnTecnico.isSelected()) {
-							experiencia = Integer.valueOf(txtYearsExperiencia.getText());
+							experiencia = Integer.valueOf(txtYearsExperiencia.getText().trim());
 							area = txtArea.getText();
 							tecnico = true;
 						}
@@ -410,7 +410,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 							 universitario = true;
 						}
 
-						OfertaLaboral aux = new OfertaLaboral("OL-" + OfertaLaboral.codOfertaLaboral, empresa.getNombre(), carrera, area, "N/A", oficio1, oficio2, oficio3, oficio4, Integer.valueOf(spnCantidad.toString()), experiencia, Integer.valueOf(txtEdad.getText()), false, obrero, tecnico, universitario, masculino, femenino, soltero, casado, viudo, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.valueOf(txtSueldo.toString()));
+						OfertaLaboral aux = new OfertaLaboral("OL-" + OfertaLaboral.codOfertaLaboral, empresa.getNombre(), carrera, area, "N/A", oficio1, oficio2, oficio3, oficio4, Integer.parseInt(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText().trim()), false, obrero, tecnico, universitario, masculino, femenino, soltero, casado, viudo, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
 						empresa.addOferta(aux);
 						Bolsa.getInstance().registrarOferta(aux);
 						JOptionPane.showMessageDialog(null, "Oferta Laboral Registrada","Registro de Oferta Laboral", JOptionPane.INFORMATION_MESSAGE);
@@ -433,16 +433,16 @@ public class RegistrarOfertaLaboral extends JDialog {
 			}
 		}
 	}
-			private void clean() {
-				txtArea.setText(" ");
-				txtCarrera.setText(" ");
-				txtEdad.setText(" ");
-				txtOficio1.setText(" ");
-				txtOficio2.setText(" ");
-				txtOficio3.setText(" ");
-				txtOficio4.setText(" ");
-				txtSueldo.setText(" ");
-				txtTrabajo.setText(" ");
-				txtYearsExperiencia.setText(" ");
+	private void clean() {
+		txtArea.setText(" ");
+		txtCarrera.setText(" ");
+		txtEdad.setText(" ");
+		txtOficio1.setText(" ");
+		txtOficio2.setText(" ");
+		txtOficio3.setText(" ");
+		txtOficio4.setText(" ");
+		txtSueldo.setText(" ");
+		txtTrabajo.setText(" ");
+		txtYearsExperiencia.setText(" ");
 	}
 }
