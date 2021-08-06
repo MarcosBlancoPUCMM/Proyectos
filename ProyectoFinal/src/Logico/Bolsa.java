@@ -117,6 +117,7 @@ public class Bolsa {
 				solicitudes.remove(i);
 				aux = aspirante.buscarIndexSolicitud(id);
 				aspirante.borrarSolicitud(aux);
+				logrado = true;
 			}
 		}
 		
@@ -136,17 +137,18 @@ public class Bolsa {
 		boolean logrado = false;
 		int aux = 0;
 		
-		for(int i=0; i<=getSolicitudes().size() ; i++) {
-			if(solicitudes.get(i).getId()==id) {
-				solicitudes.remove(i);
+		for(int i=0; i<=getOfertas().size() ; i++) {
+			if(ofertas.get(i).getId()==id) {
+				ofertas.remove(i);
 				aux = empresa.buscarIndexSolicitudEmpresa(id);
 				empresa.borrarOferta(aux);
+				logrado = true;
 			}
 		}
 		
 		return logrado;
 	}
-	
+
 	public ArrayList<SolicitudLaboral> mejoresSolicitudes(ArrayList<SolicitudLaboral> solicitudes, OfertaLaboral oferta) {
 		int aux = 0;
 		int contador;
@@ -229,5 +231,9 @@ public class Bolsa {
 	//	solicitudes.get(ganador).setLibre(false);
 		
 		return mejoresSolicitudes;
+	}
+	
+	public void setContratadoTrue() {
+		return;
 	}
 }

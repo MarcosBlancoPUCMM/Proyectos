@@ -18,6 +18,7 @@ import Logico.Aspirante;
 import Logico.Bolsa;
 import Logico.OfertaLaboral;
 import Logico.SolicitudLaboral;
+import sun.util.locale.provider.AuxLocaleProviderAdapter;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -41,7 +42,8 @@ public class ListarAspiranteAdecuado extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ListarAspiranteAdecuado(ArrayList<SolicitudLaboral> solicitudes) {
+	public ListarAspiranteAdecuado(ArrayList<SolicitudLaboral> mejoresSolicitudes) {
+		
 		setTitle("Lista de Solicitudes mejores Adecuados para la Oferta");
 		setBounds(100, 100, 675, 450);
 		getContentPane().setLayout(new BorderLayout());
@@ -69,7 +71,7 @@ public class ListarAspiranteAdecuado extends JDialog {
 								index = table.getSelectedRow();
 								if (index != -1) {
 									btnContratar.setEnabled(true);
-									//String id = (String)model.getValueAt(index, 0);
+									String id = (String)model.getValueAt(index, 0);
 									//selected = 
 								}
 							}
@@ -87,6 +89,11 @@ public class ListarAspiranteAdecuado extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				btnContratar = new JButton("Contratar");
+				btnContratar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						loadtable();
+					}
+				});
 				btnContratar.setEnabled(false);
 				btnContratar.setActionCommand("OK");
 				buttonPane.add(btnContratar);
@@ -107,6 +114,14 @@ public class ListarAspiranteAdecuado extends JDialog {
 	}
 
 	private void loadtable() {
-
+/*
+		rows = new Object[model.getColumnCount()];
+		model.setRowCount(0);
+		for(int i = 0; i < ;i++) {
+			rows[0] = 
+				
+			model.addRow(rows);
+		}
+		*/
 	}
 }
