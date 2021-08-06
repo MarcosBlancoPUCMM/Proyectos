@@ -31,8 +31,6 @@ public class ListarOfertaLaboral extends JDialog {
 	private JTable table;
 	private static DefaultTableModel model;
 	private static Object rows[];
-	private JButton btnListarSolicitudLaboral;
-	private JButton btnCrearSolicitudLaboral;
 	private OfertaLaboral selected = null;
 	private Empresa aux = null;
 	private JButton btnCancelar;
@@ -47,6 +45,7 @@ public class ListarOfertaLaboral extends JDialog {
 	 * @param empresa 
 	 */
 	public ListarOfertaLaboral(Empresa empresa) {
+		aux = empresa;
 		setTitle("Lista de Ofertas Laborales");
 		setBounds(100, 100, 900, 300);
 		setLocationRelativeTo(null);
@@ -62,13 +61,13 @@ public class ListarOfertaLaboral extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"Nombre", "Edad mínima", "Cantidad de aspirantes"};
+					String headers[] = {"No.", "Nombre", "Edad mínima", "Cantidad de aspirantes"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
 					table.addMouseListener(new MouseAdapter() {
 						@Override
-						public void mouseClicked(MouseEvent e) {
+						public void mouseClicked(MouseEvent arg0) {
 							int index = -1;
 							index = table.getSelectedRow();
 							if (index != -1) {
@@ -127,20 +126,21 @@ public class ListarOfertaLaboral extends JDialog {
 				btnSalir.setActionCommand("Cancel");
 				buttonPane.add(btnSalir);
 			}
+			loadtable();
 		}
-		loadtable();
 	}
 
 	private void loadtable() {
 		rows = new Object[model.getColumnCount()];
 		model.setRowCount(0);
-		for(int i = 0; i < Bolsa.getInstance().getEmpresas().get(i).getOfertas().size();i++) {
+		
+		for (OfertaLaboral ofertaLaboral : Bolsa.getInstance().getOfertas()) {
+			rows[0] = ofertaLaboral.getId();
+			rows[1] = ofertaLaboral.getNombre();
+			rows[2] = ofertaLaboral.getEdad();
+			rows[3] = ofertaLaboral.getCantAspirantes();
 			
-				rows[0] = Bolsa.getInstance().getEmpresas().get(i).getOfertas().get(i).getNombre();
-				rows[1] = Bolsa.getInstance().getEmpresas().get(i).getOfertas().get(i).getEdad();
-				rows[2] = Bolsa.getInstance().getEmpresas().get(i).getOfertas().get(i).getCantAspirantes();
-				
-				model.addRow(rows);
+			model.addRow(rows);
 		}
 	}
 

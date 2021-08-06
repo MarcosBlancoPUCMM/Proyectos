@@ -378,7 +378,7 @@ public class RegistrarOfertaLaboral extends JDialog {
 						}
 
 						OfertaLaboral aux = new OfertaLaboral("OL-" + OfertaLaboral.codOfertaLaboral, empresa.getNombre(), carrera, area, "N/A", oficio1, oficio2, oficio3, oficio4, Integer.parseInt(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText().trim()), false, rdbtnObrero.isSelected(), rdbtnTecnico.isSelected(), rdbtnUniversitario.isSelected(), rdbtnMasculino.isSelected(), rdbtnFemenino.isSelected(), rdbtnSoltero.isSelected(), rdbtnCasado.isSelected(), rdbtnViudo.isSelected(), rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
-						Bolsa.getInstance().registrarOferta(aux, empresa);
+						Bolsa.getInstance().registrarOferta(aux);
 						//empresa.insertarOferta(aux);
 						JOptionPane.showMessageDialog(null, "Oferta Laboral Registrada","Registro de Oferta Laboral", JOptionPane.INFORMATION_MESSAGE);
 						clean();

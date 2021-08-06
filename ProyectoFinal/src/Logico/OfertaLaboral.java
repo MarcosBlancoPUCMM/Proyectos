@@ -45,6 +45,7 @@ public class OfertaLaboral {
 		this.microsoftOffice = microsoftOffice;
 		this.adobe = adobe;
 		this.paga = paga;
+		OfertaLaboral.codOfertaLaboral++;
 	}
 	
 	public String getId() {

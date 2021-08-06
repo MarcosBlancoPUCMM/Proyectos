@@ -64,7 +64,7 @@ public class ListarEmpresa extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String headers[] = {"RNC", "Nombre", "DirecciÃ³n", "Telefono"};
+					String headers[] = {"RNC", "Nombre", "Dirección", "Telefono"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
@@ -78,7 +78,7 @@ public class ListarEmpresa extends JDialog {
 								btnCrearOfertaLaboral.setEnabled(true);
 								btnListarOfertaLaboral.setEnabled(true);
 								String rnc = (String)model.getValueAt(index, 0);
-								selected = Bolsa.getInstance().buscarEmpresa(rnc);
+								selected = Bolsa.getInstance().findEmpresaByRNC(rnc);
 							}
 						}
 					});
@@ -95,9 +95,9 @@ public class ListarEmpresa extends JDialog {
 				btnListarOfertaLaboral = new JButton("Listar Oferta Laboral");
 				btnListarOfertaLaboral.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						ListarOfertaLaboral listarofertalaboral = new ListarOfertaLaboral(selected);
-						listarofertalaboral.setModal(true);
-						listarofertalaboral.setVisible(true);
+						ListarOfertaLaboral listarOfertaLaboral = new ListarOfertaLaboral(selected);
+						listarOfertaLaboral.setModal(true);
+						listarOfertaLaboral.setVisible(true);
 					}
 				});
 				btnListarOfertaLaboral.setEnabled(false);
@@ -137,8 +137,8 @@ public class ListarEmpresa extends JDialog {
 		for(int i =0; i<Bolsa.getInstance().getEmpresas().size();i++) {
 			rows[0] = Bolsa.getInstance().getEmpresas().get(i).getRNC();
 			rows[1] = Bolsa.getInstance().getEmpresas().get(i).getNombre();
-			rows[2] = Bolsa.getInstance().getEmpresas().get(i).getTelefono();
-			rows[3] = Bolsa.getInstance().getEmpresas().get(i).getDireccion();
+			rows[2] = Bolsa.getInstance().getEmpresas().get(i).getDireccion();
+			rows[3] = Bolsa.getInstance().getEmpresas().get(i).getTelefono();
 			
 			model.addRow(rows);
 		}

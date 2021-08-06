@@ -12,7 +12,7 @@ public class Empresa {
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.direccion = direccion;
-		RNC = rNC;
+		this.RNC = rNC;
 		this.ofertas = ofertas;
 	}
 

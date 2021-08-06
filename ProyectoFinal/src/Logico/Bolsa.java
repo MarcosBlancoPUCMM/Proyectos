@@ -50,10 +50,10 @@ public class Bolsa {
 		this.solicitudes = solicitudes;
 	}
 
-	public boolean registrarOferta(OfertaLaboral oferta, Empresa empresa) {
+	public boolean registrarAspirante(Aspirante aspirante) {
 		boolean logrado = false;
-		if (oferta != null) {
-			ofertas.add(oferta);
+		if (aspirante != null && !existeAspirante(aspirante)) {
+			aspirantes.add(aspirante);
 			logrado = true;
 		}
 		return logrado;
@@ -71,43 +71,38 @@ public class Bolsa {
 		return existe;
 	}
 	
-	public boolean registrarAspirante(Aspirante aspirante) {
+	public boolean registrarEmpresa(Empresa empresa) {
 		boolean logrado = false;
-		if (aspirante != null && !existeAspirante(aspirante)) {		//Si el metodo encuentra al aspirante lo registra
-			aspirantes.add(aspirante);
+		Empresa aux = findEmpresaByRNC(empresa.getRNC());
+		if (aux == null) {
+			empresas.add(empresa);
 			logrado = true;
 		}
 		return logrado;
+	}
+	
+	public Aspirante findAspiranteByCedula(String cedula) {
+		for (Aspirante aspirante : aspirantes) {
+			if (aspirante.getCedula().equalsIgnoreCase(cedula)) {
+				return aspirante;
+			}
+		}
+		return null;
+	}
+	
+	public Empresa findEmpresaByRNC(String rnc) {
+		for (Empresa empresa : empresas) {
+			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
+				return empresa;
+			}
+		}
+		return null;
 	}
 	
 	public boolean registrarSolicitud(SolicitudLaboral solicitud) {
 		boolean logrado = false;
 		if (solicitud != null) {
 			solicitudes.add(solicitud);
-			logrado = true;
-		}
-		return logrado;
-	}
-
-	public Empresa buscarEmpresa(String RNC) {
-		int i = 0;
-		boolean encontrado = false;
-		Empresa aux = null;
-		while (i < empresas.size() && !encontrado) {
-			if (empresas.get(i).getRNC().equalsIgnoreCase(RNC)) {
-				aux = empresas.get(i);
-				encontrado = true;
-			}
-			i++;
-		}
-		return aux;
-	}
-	
-	public boolean registrarEmpresa(Empresa empresa) {
-		boolean logrado = false;
-		Empresa aux = buscarEmpresa(empresa.getRNC());
-		if (aux == null) {
-			empresas.add(empresa);
 			logrado = true;
 		}
 		return logrado;
@@ -125,6 +120,15 @@ public class Bolsa {
 			}
 		}
 		
+		return logrado;
+	}
+	
+	public boolean registrarOferta(OfertaLaboral oferta) {
+		boolean logrado = false;
+		if (oferta != null) {
+			ofertas.add(oferta);
+			logrado = true;
+		}
 		return logrado;
 	}
 
@@ -226,15 +230,4 @@ public class Bolsa {
 		
 		return mejoresSolicitudes;
 	}
-
-
-	public Aspirante findAspiranteByCedula(String cedula) {
-		for (Aspirante aspirante : aspirantes) {
-			if (aspirante.getCedula().equalsIgnoreCase(cedula)) {
-				return aspirante;
-			}
-		}
-		return null;
-	}
-
 }
