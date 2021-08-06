@@ -374,8 +374,6 @@ public class RegistrarOfertaLaboral extends JDialog {
 							sexo = "Masculino";
 						}else if(rdbtnFemenino.isSelected() && !rdbtnMasculino.isSelected()) {
 							sexo = "Femenino";
-						}else if(rdbtnFemenino.isSelected() && rdbtnMasculino.isSelected()) {
-							sexo = "N/A";
 						}
 						
 						if(rdbtnCasado.isSelected() && !rdbtnSoltero.isSelected() && !rdbtnViudo.isSelected()) {
@@ -390,8 +388,6 @@ public class RegistrarOfertaLaboral extends JDialog {
 							estadocivil = "Soltero o Viudo"; 
 						}else if(rdbtnCasado.isSelected() && !rdbtnSoltero.isSelected() && rdbtnViudo.isSelected()) {
 							estadocivil = "Casado o Viudo"; 
-						}else if(rdbtnCasado.isSelected() && rdbtnSoltero.isSelected() && rdbtnViudo.isSelected()) {
-							estadocivil = "N/A"; 
 						}
 						
 						if(rdbtnObrero.isSelected()) {
@@ -404,10 +400,9 @@ public class RegistrarOfertaLaboral extends JDialog {
 						if (rdbtnUniversitario.isSelected()) {
 							 carrera = txtCarrera.getText();
 						}
-						
-						boolean completado = false;
-						
-						OfertaLaboral aux = new OfertaLaboral("OL-"+ OfertaLaboral.codOfertaLaboral, "N/A", txtEmpresa.getText(), carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadocivil, Integer.valueOf(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText()), completado, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
+
+						OfertaLaboral aux = new OfertaLaboral("OL-"+ OfertaLaboral.codOfertaLaboral, "N/A", txtEmpresa.getText(), carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadocivil, Integer.parseInt(spnCantidad.getValue().toString().trim()), experiencia, Integer.parseInt(txtEdad.getText().trim()), false, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
+						empresa.addOferta(aux);
 						Bolsa.getInstance().registrarOferta(aux);
 						JOptionPane.showMessageDialog(null, "Oferta Laboral Registrada","Registro de Oferta Laboral", JOptionPane.INFORMATION_MESSAGE);
 						clean();
