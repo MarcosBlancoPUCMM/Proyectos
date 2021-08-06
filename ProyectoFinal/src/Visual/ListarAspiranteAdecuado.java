@@ -43,7 +43,7 @@ public class ListarAspiranteAdecuado extends JDialog {
 	 */
 	public ListarAspiranteAdecuado(ArrayList<SolicitudLaboral> solicitudes) {
 		setTitle("Lista de Solicitudes mejores Adecuados para la Oferta");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 675, 450);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
