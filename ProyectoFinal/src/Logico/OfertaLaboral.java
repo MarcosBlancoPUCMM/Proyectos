@@ -2,20 +2,20 @@ package Logico;
 
 public class OfertaLaboral {
 
-	private String id, tipo, nombre, carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadoCivil;
+	private String id, nombre, carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4;
 	private int cantAspirantes, yearsExperiencia, edad;
-	private boolean completado, espanol, ingles, frances, dispuestoMudarse, licenciaConducir, trabajoParcial, microsoftOffice, adobe;
+	private boolean completado, obrero, tecnico, universitario, masculino, femenino, soltero, casado, viudo, espanol, ingles, frances, dispuestoMudarse, licenciaConducir, trabajoParcial, microsoftOffice, adobe;
 	private float paga;
 	public static int codOfertaLaboral = 1;
 	
-	public OfertaLaboral(String id, String tipo, String nombre, String carrera, String area, String nacionalidad,
-			String oficio1, String oficio2, String oficio3, String oficio4, String sexo, String estadoCivil,
-			int cantAspirantes, int yearsExperiencia, int edad, boolean completado, boolean espanol, boolean ingles,
+	public OfertaLaboral(String id, String nombre, String carrera, String area, String nacionalidad, String oficio1,
+			String oficio2, String oficio3, String oficio4, int cantAspirantes, int yearsExperiencia, int edad,
+			boolean completado, boolean obrero, boolean tecnico, boolean universitario, boolean masculino,
+			boolean femenino, boolean soltero, boolean casado, boolean viudo, boolean espanol, boolean ingles,
 			boolean frances, boolean dispuestoMudarse, boolean licenciaConducir, boolean trabajoParcial,
 			boolean microsoftOffice, boolean adobe, float paga) {
 		super();
 		this.id = id;
-		this.tipo = tipo;
 		this.nombre = nombre;
 		this.carrera = carrera;
 		this.area = area;
@@ -24,12 +24,18 @@ public class OfertaLaboral {
 		this.oficio2 = oficio2;
 		this.oficio3 = oficio3;
 		this.oficio4 = oficio4;
-		this.sexo = sexo;
-		this.estadoCivil = estadoCivil;
 		this.cantAspirantes = cantAspirantes;
 		this.yearsExperiencia = yearsExperiencia;
 		this.edad = edad;
 		this.completado = completado;
+		this.obrero = obrero;
+		this.tecnico = tecnico;
+		this.universitario = universitario;
+		this.masculino = masculino;
+		this.femenino = femenino;
+		this.soltero = soltero;
+		this.casado = casado;
+		this.viudo = viudo;
 		this.espanol = espanol;
 		this.ingles = ingles;
 		this.frances = frances;
@@ -39,7 +45,6 @@ public class OfertaLaboral {
 		this.microsoftOffice = microsoftOffice;
 		this.adobe = adobe;
 		this.paga = paga;
-		OfertaLaboral.codOfertaLaboral++;
 	}
 	
 	public String getId() {
@@ -47,12 +52,6 @@ public class OfertaLaboral {
 	}
 	public void setId(String id) {
 		this.id = id;
-	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 	public String getNombre() {
 		return nombre;
@@ -102,18 +101,6 @@ public class OfertaLaboral {
 	public void setOficio4(String oficio4) {
 		this.oficio4 = oficio4;
 	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-	public String getEstadoCivil() {
-		return estadoCivil;
-	}
-	public void setEstadoCivil(String estadoCivil) {
-		this.estadoCivil = estadoCivil;
-	}
 	public int getCantAspirantes() {
 		return cantAspirantes;
 	}
@@ -137,6 +124,54 @@ public class OfertaLaboral {
 	}
 	public void setCompletado(boolean completado) {
 		this.completado = completado;
+	}
+	public boolean isObrero() {
+		return obrero;
+	}
+	public void setObrero(boolean obrero) {
+		this.obrero = obrero;
+	}
+	public boolean isTecnico() {
+		return tecnico;
+	}
+	public void setTecnico(boolean tecnico) {
+		this.tecnico = tecnico;
+	}
+	public boolean isUniversitario() {
+		return universitario;
+	}
+	public void setUniversitario(boolean universitario) {
+		this.universitario = universitario;
+	}
+	public boolean isMasculino() {
+		return masculino;
+	}
+	public void setMasculino(boolean masculino) {
+		this.masculino = masculino;
+	}
+	public boolean isFemenino() {
+		return femenino;
+	}
+	public void setFemenino(boolean femenino) {
+		this.femenino = femenino;
+	}
+	public boolean isSoltero() {
+		return soltero;
+	}
+	public void setSoltero(boolean soltero) {
+		this.soltero = soltero;
+	}
+	public boolean isCasado() {
+		return casado;
+	}
+	public void setCasado(boolean casado) {
+		this.casado = casado;
+	}
+	public boolean isViudo() {
+		return viudo;
+	}
+	public void setViudo(boolean viudo) {
+		this.viudo = viudo;
 	}
 	public boolean isEspanol() {
 		return espanol;
@@ -191,11 +226,5 @@ public class OfertaLaboral {
 	}
 	public void setPaga(float paga) {
 		this.paga = paga;
-	}
-	public static int getCodOfertaLaboral() {
-		return codOfertaLaboral;
-	}
-	public static void setCodOfertaLaboral(int codOfertaLaboral) {
-		OfertaLaboral.codOfertaLaboral = codOfertaLaboral;
 	}
 }
