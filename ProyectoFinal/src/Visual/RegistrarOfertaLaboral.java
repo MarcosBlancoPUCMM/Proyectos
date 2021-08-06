@@ -353,66 +353,33 @@ public class RegistrarOfertaLaboral extends JDialog {
 				btnCrear.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						
-						boolean obrero = false;
 						String oficio1 = "N/A";
 						String oficio2 = "N/A";
 						String oficio3 = "N/A";
 						String oficio4 = "N/A";
-						
-						boolean tecnico = false;
 						String area = "N/A";
 						int experiencia = 0;
-						
-						boolean universitario = false;
 						String carrera = "N/A";
-						
-						boolean masculino = false;
-						boolean femenino = false;
-						
-						boolean soltero = false;
-						boolean casado = false;
-						boolean viudo = false;
-						
-
-						if(rdbtnMasculino.isSelected()) {
-							masculino = true;
-						} 
-						if(rdbtnFemenino.isSelected()) {
-							femenino = true;
-						}
-						
-						if(rdbtnSoltero.isSelected()) {
-							soltero = true;
-						}
-						if(rdbtnCasado.isSelected()) {
-							casado = true; 
-						}
-						if(rdbtnViudo.isSelected()) {
-							viudo = true;
-						}
 						
 						if(rdbtnObrero.isSelected()) {
 							 oficio1 = txtOficio1.getText();
 							 oficio2 = txtOficio2.getText();
 							 oficio3 = txtOficio3.getText();
 							 oficio4 = txtOficio4.getText();
-							 obrero = true;
 						}
 						
 						if(rdbtnTecnico.isSelected()) {
 							experiencia = Integer.valueOf(txtYearsExperiencia.getText().trim());
 							area = txtArea.getText();
-							tecnico = true;
 						}
 						
 						if (rdbtnUniversitario.isSelected()) {
 							 carrera = txtCarrera.getText();
-							 universitario = true;
 						}
 
-						OfertaLaboral aux = new OfertaLaboral("OL-" + OfertaLaboral.codOfertaLaboral, empresa.getNombre(), carrera, area, "N/A", oficio1, oficio2, oficio3, oficio4, Integer.parseInt(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText().trim()), false, obrero, tecnico, universitario, masculino, femenino, soltero, casado, viudo, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
-						empresa.addOferta(aux);
-						Bolsa.getInstance().registrarOferta(aux);
+						OfertaLaboral aux = new OfertaLaboral("OL-" + OfertaLaboral.codOfertaLaboral, empresa.getNombre(), carrera, area, "N/A", oficio1, oficio2, oficio3, oficio4, Integer.parseInt(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText().trim()), false, rdbtnObrero.isSelected(), rdbtnTecnico.isSelected(), rdbtnUniversitario.isSelected(), rdbtnMasculino.isSelected(), rdbtnFemenino.isSelected(), rdbtnSoltero.isSelected(), rdbtnCasado.isSelected(), rdbtnViudo.isSelected(), rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
+						Bolsa.getInstance().registrarOferta(aux, empresa);
+						//empresa.insertarOferta(aux);
 						JOptionPane.showMessageDialog(null, "Oferta Laboral Registrada","Registro de Oferta Laboral", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}							

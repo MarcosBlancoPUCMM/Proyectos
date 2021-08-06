@@ -108,6 +108,7 @@ public class ListarOfertaLaboral extends JDialog {
 						int option = JOptionPane.showConfirmDialog(null,  "¿Desea cancelar la oferta?");
 						if(option == JOptionPane.YES_OPTION) {
 							Bolsa.getInstance().eliminarOferta(empresa, selected.getId());
+							loadtable();
 						}
 					}
 				});

@@ -92,6 +92,7 @@ public class ListarSolicitudLaboral extends JDialog {
 						int option = JOptionPane.showConfirmDialog(null,  "¿Desea cancelar la solicitud?");
 						if(option == JOptionPane.YES_OPTION) {
 							Bolsa.getInstance().eliminarSolicitud(aspirante, selected.getId());
+							loadtable();
 						}
 					}
 				});

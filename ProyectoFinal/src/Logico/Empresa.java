@@ -84,8 +84,4 @@ public class Empresa {
 	public void borrarOferta(int i) {
 		ofertas.remove(i);
 	}
-	
-	public void addOferta(OfertaLaboral ofert) {
-		ofertas.add(ofert);
-	}
 }

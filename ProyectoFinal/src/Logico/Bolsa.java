@@ -54,7 +54,6 @@ public class Bolsa {
 		boolean logrado = false;
 		if (oferta != null) {
 			ofertas.add(oferta);
-			empresa.addOferta(oferta);
 			logrado = true;
 		}
 		return logrado;
