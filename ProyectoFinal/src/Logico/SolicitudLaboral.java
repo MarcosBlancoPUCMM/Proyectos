@@ -131,11 +131,9 @@ public class SolicitudLaboral {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-
 	public String getOficio1() {
 		return oficio1;
 	}
-
 	public void setOficio1(String oficio1) {
 		this.oficio1 = oficio1;
 	}

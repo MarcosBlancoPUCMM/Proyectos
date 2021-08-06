@@ -145,6 +145,7 @@ public class Bolsa {
 	}
 	
 	public ArrayList<SolicitudLaboral> mejoresSolicitudes(ArrayList<SolicitudLaboral> solicitudes, OfertaLaboral oferta) {
+		/*
 		int aux = 0;
 		int contador;
 		int masAlto=0;
@@ -208,6 +209,8 @@ public class Bolsa {
 	//	solicitudes.get(ganador).setLibre(false);
 		
 		return mejoresSolicitudes;
+		*/
+		return null;
 	}
 
 

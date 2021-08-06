@@ -353,45 +353,42 @@ public class RegistrarOfertaLaboral extends JDialog {
 				btnCrear.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						
-						String sexo = "N/A";
-						String estadocivil = "N/A";
+						boolean obrero = false;
 						String oficio1 = "N/A";
 						String oficio2 = "N/A";
 						String oficio3 = "N/A";
 						String oficio4 = "N/A";
-						String nacionalidad = "N/A";
-						String carrera = "N/A";
-						String area = "N/A";
 						
+						boolean tecnico = false;
+						String area = "N/A";
 						int experiencia = 0;
 						
-						if(rdbtnTecnico.isSelected()) {
-							experiencia = Integer.valueOf(txtYearsExperiencia.getText());
-							area = txtArea.getText();
+						boolean universitario = false;
+						String carrera = "N/A";
+						
+						boolean masculino = false;
+						boolean femenino = false;
+						
+						boolean soltero = false;
+						boolean casado = false;
+						boolean viudo = false;
+						
+
+						if(rdbtnMasculino.isSelected()) {
+							masculino = true;
+						} 
+						if(rdbtnFemenino.isSelected()) {
+							femenino = true;
 						}
 						
-						if(rdbtnMasculino.isSelected() && !rdbtnFemenino.isSelected()) {
-							sexo = "Masculino";
-						}else if(rdbtnFemenino.isSelected() && !rdbtnMasculino.isSelected()) {
-							sexo = "Femenino";
-						}else if(rdbtnFemenino.isSelected() && rdbtnMasculino.isSelected()) {
-							sexo = "N/A";
+						if(rdbtnSoltero.isSelected()) {
+							soltero = true;
 						}
-						
-						if(rdbtnCasado.isSelected() && !rdbtnSoltero.isSelected() && !rdbtnViudo.isSelected()) {
-							estadocivil = "Casado"; 
-						}else if(!rdbtnCasado.isSelected() && rdbtnSoltero.isSelected() && !rdbtnViudo.isSelected()) {
-							estadocivil = "Soltero"; 
-						}else if(!rdbtnCasado.isSelected() && !rdbtnSoltero.isSelected() && rdbtnViudo.isSelected()) {
-							estadocivil = "Viudo"; 
-						}else if(rdbtnCasado.isSelected() && rdbtnSoltero.isSelected() && !rdbtnViudo.isSelected()) {
-							estadocivil = "Casado o Soltero"; 
-						}else if(!rdbtnCasado.isSelected() && rdbtnSoltero.isSelected() && rdbtnViudo.isSelected()) {
-							estadocivil = "Soltero o Viudo"; 
-						}else if(rdbtnCasado.isSelected() && !rdbtnSoltero.isSelected() && rdbtnViudo.isSelected()) {
-							estadocivil = "Casado o Viudo"; 
-						}else if(rdbtnCasado.isSelected() && rdbtnSoltero.isSelected() && rdbtnViudo.isSelected()) {
-							estadocivil = "N/A"; 
+						if(rdbtnCasado.isSelected()) {
+							casado = true; 
+						}
+						if(rdbtnViudo.isSelected()) {
+							viudo = true;
 						}
 						
 						if(rdbtnObrero.isSelected()) {
@@ -399,19 +396,25 @@ public class RegistrarOfertaLaboral extends JDialog {
 							 oficio2 = txtOficio2.getText();
 							 oficio3 = txtOficio3.getText();
 							 oficio4 = txtOficio4.getText();
+							 obrero = true;
+						}
+						
+						if(rdbtnTecnico.isSelected()) {
+							experiencia = Integer.valueOf(txtYearsExperiencia.getText().trim());
+							area = txtArea.getText();
+							tecnico = true;
 						}
 						
 						if (rdbtnUniversitario.isSelected()) {
 							 carrera = txtCarrera.getText();
+							 universitario = true;
 						}
-						
-						boolean completado = false;
-						
-						OfertaLaboral aux = new OfertaLaboral("OL-"+ OfertaLaboral.codOfertaLaboral, "N/A", txtEmpresa.getText(), carrera, area, nacionalidad, oficio1, oficio2, oficio3, oficio4, sexo, estadocivil, Integer.valueOf(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText()), completado, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
+
+						OfertaLaboral aux = new OfertaLaboral("OL-" + OfertaLaboral.codOfertaLaboral, empresa.getNombre(), carrera, area, "N/A", oficio1, oficio2, oficio3, oficio4, Integer.parseInt(spnCantidad.getValue().toString()), experiencia, Integer.valueOf(txtEdad.getText().trim()), false, obrero, tecnico, universitario, masculino, femenino, soltero, casado, viudo, rdbtnEspanol.isSelected(), rdbtnIngles.isSelected(), rdbtnFrances.isSelected(), rdbtnDispuestoMudarse.isSelected(), rdbtnLicenciaConducir.isSelected(), rdbtnTrabajoParcial.isSelected(), rdbtnMicrosoftOffice.isSelected(), rdbtnAdobe.isSelected(), Float.parseFloat(txtSueldo.getText()));
+						empresa.addOferta(aux);
 						Bolsa.getInstance().registrarOferta(aux);
 						JOptionPane.showMessageDialog(null, "Oferta Laboral Registrada","Registro de Oferta Laboral", JOptionPane.INFORMATION_MESSAGE);
 						clean();
-						
 					}							
 				});
 				btnCrear.setActionCommand("OK");
@@ -430,17 +433,16 @@ public class RegistrarOfertaLaboral extends JDialog {
 			}
 		}
 	}
-			private void clean() {
-				txtArea.setText(" ");
-				txtCarrera.setText(" ");
-				txtEdad.setText(" ");
-				txtOficio1.setText(" ");
-				txtOficio2.setText(" ");
-				txtOficio3.setText(" ");
-				txtOficio4.setText(" ");
-				txtSueldo.setText(" ");
-				txtTrabajo.setText(" ");
-				txtYearsExperiencia.setText(" ");
-				
+	private void clean() {
+		txtArea.setText(" ");
+		txtCarrera.setText(" ");
+		txtEdad.setText(" ");
+		txtOficio1.setText(" ");
+		txtOficio2.setText(" ");
+		txtOficio3.setText(" ");
+		txtOficio4.setText(" ");
+		txtSueldo.setText(" ");
+		txtTrabajo.setText(" ");
+		txtYearsExperiencia.setText(" ");
 	}
 }

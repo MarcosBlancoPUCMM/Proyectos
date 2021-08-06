@@ -390,6 +390,7 @@ public class RegistrarAspirante extends JDialog {
 				panel.add(lblRegistrarAspirante);
 			}
 		}
+		lblRegistrarAspirante.setIcon(userIcon);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -441,6 +442,7 @@ public class RegistrarAspirante extends JDialog {
 			}
 		}
 	}
+	
 	private void clean() {
 		txtNombre.setText("");
 		txtApellidos.setText("");

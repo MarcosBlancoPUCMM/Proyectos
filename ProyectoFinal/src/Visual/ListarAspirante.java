@@ -50,7 +50,7 @@ public class ListarAspirante extends JDialog {
 	 */
 	public ListarAspirante() {
 		setTitle("Lista de Aspirantes");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 675, 450);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

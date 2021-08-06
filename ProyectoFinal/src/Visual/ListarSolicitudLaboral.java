@@ -45,7 +45,7 @@ public class ListarSolicitudLaboral extends JDialog {
 	public ListarSolicitudLaboral(Aspirante aspirante) {
 		aux = aspirante;
 		setTitle("Lista de Solicitud Laboral");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 900, 450);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

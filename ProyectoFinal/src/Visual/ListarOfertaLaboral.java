@@ -48,7 +48,7 @@ public class ListarOfertaLaboral extends JDialog {
 	 */
 	public ListarOfertaLaboral(Empresa empresa) {
 		setTitle("Lista de Ofertas Laborales");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 900, 300);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

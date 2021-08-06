@@ -50,7 +50,7 @@ public class ListarEmpresa extends JDialog {
 	 */
 	public ListarEmpresa() {
 		setTitle("Lista de Empresas");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 675, 450);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,6 +68,7 @@ public class ListarEmpresa extends JDialog {
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(headers);
 					table = new JTable();
+					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					table.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent arg0) {
@@ -82,7 +83,6 @@ public class ListarEmpresa extends JDialog {
 						}
 					});
 					table.setModel(model);
-					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					scrollPane.setViewportView(table);
 				}
 			}
@@ -119,6 +119,11 @@ public class ListarEmpresa extends JDialog {
 			}
 			{
 				btnSalir = new JButton("Salir");
+				btnSalir.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				btnSalir.setActionCommand("Cancel");
 				buttonPane.add(btnSalir);
 			}
